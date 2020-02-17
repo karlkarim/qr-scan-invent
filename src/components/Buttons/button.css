@@ -45,6 +45,15 @@
     border: 1px solid var(--danger);
     color: var(--danger);
 }
+.btn-karl-custom {
+    border-radius: 5em;
+    background: linear-gradient(to right, #1d3ee0, #7082db);
+    border: 0;
+    margin:auto 38%;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 13px;
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+}
 .btn-medium {
     width: 20%;
 }

@@ -9,12 +9,13 @@ const STYLES = [
     "btn-secondary-outline",
     "btn-warning-outline",
     "btn-danger-outline",
+    "btn-karl-custom"
 ]
 
-export const SIZE = [{
-    medium:"btn-medium",
-    large:"btn-large",
-    small:"btn-small"}]
+export const SIZE = [
+    "btn-medium",
+    "btn-large",
+    "btn-small"]
 
 const Button = ({
     children,
@@ -23,7 +24,7 @@ const Button = ({
     buttonStyle,
     buttonSize}) => {
     const checkStyle = STYLES.includes(buttonStyle) ? buttonStyle : STYLES[0];
-    const checkSize = SIZE.includes(buttonSize) ? buttonSize : SIZE.medium;
+    const checkSize = SIZE.includes(buttonSize) ? buttonSize : SIZE[0];
     SIZE.includes()
     return (
         <button className={`btn ${checkSize} ${checkStyle}`} type={type} onClick={onClick}>
