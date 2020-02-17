@@ -1,5 +1,8 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+import "firebase/auth";
+
+
 const firebaseConfig = {
     apiKey: "AIzaSyD5KyqAjvvE-PbTJBzad2p9dNMRk_N3y2g",
     authDomain: "qr-inventory-a8944.firebaseapp.com",
@@ -11,4 +14,4 @@ const firebaseConfig = {
     measurementId: "G-VTFWK0NKPD"
 };
 firebase.initializeApp(firebaseConfig);
-export default firebase 
+export default firebase
