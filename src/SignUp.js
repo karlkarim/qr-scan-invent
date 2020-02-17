@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import { withRouter } from "react-router";
 import app from "./firebase";
 import "./SignUp.css";
-
+import AuthForm from './components/Forms/authForm';
 const SignUp = ({ history }) => {
   const handleSignUp = useCallback(async event => {
     event.preventDefault();
@@ -19,6 +19,7 @@ const SignUp = ({ history }) => {
 
   return (
     <div>
+      <AuthForm onSubmit={handleSignUp} formType="signup"/>
       <h1>Sign up</h1>
       <form onSubmit={handleSignUp}>
         <label>

@@ -6,10 +6,14 @@ import Login from "./Login";
 import SignUp from "./SignUp";
 import { AuthProvider } from "./Auth";
 import PrivateRoute from "./PrivateRoute";
+import Button, {SIZE} from './components/Buttons/button';
 
 const App = () => {
   return (
     <AuthProvider>
+    <Button buttonStyle={'btn-warning-outline'} buttonSize={SIZE.large} type="submit" onClick={() => console.log('clicked')}>
+      Testsdfdsffd
+    </Button>
       <Router>
         <div>
           <PrivateRoute exact path="/" component={Home} />
