@@ -30,12 +30,28 @@ const AuthForm = ({
         </div>
         <div className='logo'>QR Inventory</div>
         <h1 className='sign' align='center'>{checkFormType.title}</h1>
-        <form onSubmit={onSubmit} className='form1'>
-            <TextField textStyle='defaultIpnut' inputType='text' inputName='email'/>
-            <TextField textStyle='defaultIpnut' inputType='password' inputName='password'/>
-            <Button buttonStyle={'btn-karl-custom'} type='submit'>{checkFormType.btnCTA}</Button>
+        <div className='authContainer'>
+        <form className='authForm' onSubmit={onSubmit}>
+            <TextField textStyle='defaultIpnut' inputType='text' inputName='email' inputPlaceholder='Email'/>
+            <TextField textStyle='defaultIpnut' inputType='password' inputName='password'inputPlaceholder='Password'/>
         </form>
-    <Link to={checkFormType.navLink}>{checkFormType.navLinkText}</Link>
+        <div className='formActionBtns'>
+            <Button buttonSize={'btn-medium'} buttonStyle={'btn-primary-outline'} isPill={true} type='submit'>{checkFormType.btnCTA}</Button>
+            <Button buttonSize={'btn-medium'} buttonStyle={'btn-primary-outline'} isPill={true} type='submit'>{checkFormType.btnCTA}</Button>
+        </div>
+        </div>
+        <div style={{textAlign:'right',marginRight: '30px',
+            marginTop: '30px', paddingBottom: '30px'}}>
+    <Link
+        to={checkFormType.navLink}
+        style={{
+            textDecoration:'none',
+            'a:visited': '#766aaf',
+            color: '#766aaf',
+            marginBottom: '30px'
+        }}
+    >{checkFormType.navLinkText}</Link>
+    </div>
     </div>
     )
 }

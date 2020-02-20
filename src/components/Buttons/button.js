@@ -1,6 +1,6 @@
 import React from 'react';
 import './button.css';
-const STYLES = [
+export const STYLES = [
     "btn-primary-solid",
     "btn-secondary-solid",
     "btn-warning-solid",
@@ -11,7 +11,6 @@ const STYLES = [
     "btn-danger-outline",
     "btn-karl-custom"
 ]
-
 export const SIZE = [
     "btn-medium",
     "btn-large",
@@ -22,12 +21,14 @@ const Button = ({
     type,
     onClick,
     buttonStyle,
-    buttonSize}) => {
+    buttonSize,
+    isPill}) => {
     const checkStyle = STYLES.includes(buttonStyle) ? buttonStyle : STYLES[0];
     const checkSize = SIZE.includes(buttonSize) ? buttonSize : SIZE[0];
+    const checkPill = isPill ? 'isPill' : ''
     SIZE.includes()
     return (
-        <button className={`btn ${checkSize} ${checkStyle}`} type={type} onClick={onClick}>
+        <button className={`btn ${checkSize} ${checkStyle} ${checkPill}`} type={type} onClick={onClick}>
             {children}
         </button>
     )

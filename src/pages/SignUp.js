@@ -17,9 +17,7 @@ const SignUp = ({ history }) => {
   }, [history]);
 
   return (
-    <div>
       <AuthForm onSubmit={handleSignUp} formType="signup"/>
-    </div>
   );
 };
 

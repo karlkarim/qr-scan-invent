@@ -9,7 +9,8 @@ const TextField = ({
     textStyle,
     inputName,
     inputPlaceholder,
-    onClick
+    onClick,
+    onChange
 }) => {
     const applyStyle = STYLE.includes(textStyle) ? textStyle : STYLE[0]
     return (
@@ -18,6 +19,7 @@ const TextField = ({
         type={inputType}
         name={inputName}
         placeholder={inputPlaceholder}
+        onChange={onChange}
         onClick={onClick}/>
     )
 }
