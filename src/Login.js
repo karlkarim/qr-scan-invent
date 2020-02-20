@@ -2,6 +2,8 @@ import React, { useCallback, useContext } from "react";
 import { withRouter, Redirect } from "react-router";
 import app from "./firebase.js";
 import { AuthContext } from "./Auth.js";
+import logo from './img/logo.png';
+import "./Login.css";
 
 const Login = ({ history }) => {
   const handleLogin = useCallback(
@@ -27,9 +29,25 @@ const Login = ({ history }) => {
   }
 
   return (
-    <div>
-      <h1>Log in</h1>
-      <form onSubmit={handleLogin}>
+    <div className="main">
+      <div className="logo">
+            <img src={logo} alt="Logo" />
+      </div>
+      <div className="description">
+        QR Inventory
+      </div>
+      <h1 className="loginSign" align="center">Login</h1>
+      <form className="form1" onSubmit={handleLogin}>
+            <div>     
+                <input className="usern" align="center" name="email" type="email" placeholder="Email" />
+            </div>
+                <input className="pass" align="center" name="password" type="password" placeholder="Password" />          
+            <div>
+                <button type="submit">Login</button>
+            </div>
+      </form>
+
+      {/* <form onSubmit={handleLogin}>
         <label>
           Email
           <input name="email" type="email" placeholder="Email" />
@@ -39,7 +57,7 @@ const Login = ({ history }) => {
           <input name="password" type="password" placeholder="Password" />
         </label>
         <button type="submit">Log in</button>
-      </form>
+      </form> */}
     </div>
   );
 };

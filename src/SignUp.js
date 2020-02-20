@@ -23,7 +23,7 @@ const SignUp = ({ history }) => {
         <div className="logo">
             <img src={logo} alt="Logo" />
         </div>
-        <div className="logo">
+        <div className="description">
             QR Inventory
         </div>
       <h1 className="sign" align="center">Sign up</h1>
