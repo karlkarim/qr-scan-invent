@@ -1,19 +1,53 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import QRCodeGenerator from 'qrcode.react';
-
+import firebase from "../firebase";
 
 const QRManager = () => {
     const [data, setData ] = useState('')
-
+    const [items, setItems] = useState([]) 
+    
     const handleQRValue=(e) => {
         e.preventDefault()
         setData(e.target.value)
     }
 
 
-    return (<div className="content">
+
+    const getItems = async() => {
+        try {
+            firebase.firestore().collection("items").onSnapshot(items => {
+                const item = items.docs.map(doc => ({
+                    id: doc.id,
+                    ...doc.data()
+                }))
+                setItems(item)
+            })
+            
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
+
+    const addQR = async(qrItemName) => {
+
+        try {
+            const add = await firebase.firestore().collection("items").add({name: qrItemName})
+            return add;
+        } catch (error) {
+            
+        }
+    }
+
+    useEffect(() => {
+        getItems();
+    }, [])
+
+    return (<div className="container">
             <section>
-                <div className="container">
+                
+                <div className="content">
+
                     <h1 className="title">QR Manager</h1>                
                 </div>
             </section>
@@ -34,7 +68,7 @@ const QRManager = () => {
                             </div>   
                             </div> 
                             </div> 
-                            <button class="button is-link is-rounded">Generate</button>              
+                            <button class="button is-link is-rounded" onClick={() => addQR(data)}>Add Item</button>              
                         </div>
                     </div>
                     <div className="column">
@@ -51,11 +85,13 @@ const QRManager = () => {
         <section>
             <div className="container">
                 <div className="columns is-multiline">
+                    {items.map(item => (
+
                     <div className="column is-one-quarter">
                         <div className="card">
                             <header className="card-header">
                                 <p className="card-header-title">
-                                Component
+                                {item.name}
                                 </p>
                                 <a href="#" className="card-header-icon" aria-label="more options">
                                 <span className="icon">
@@ -65,11 +101,10 @@ const QRManager = () => {
                             </header>
                             <div className="card-content">
                             <div className="content" >
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                                <a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
-                                <br/>
-                                <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-                                </div>
+                            <QRCodeGenerator 
+                                value={item.name}
+                                imageSettings={{excavate: true, height: 24,width: 24,src:'http://tmd.ee/wp-content/uploads/2018/03/favicon.ico'}}
+                            />                            </div>
                             </div>
                             <footer className="card-footer">
                                 <a href="#" class="card-footer-item">Save</a>
@@ -78,87 +113,9 @@ const QRManager = () => {
                             </footer>
                         </div>
                     </div>  
-                    <div className="column is-one-quarter">
-                        <div className="card">
-                            <header className="card-header">
-                                <p className="card-header-title">
-                                Component
-                                </p>
-                                <a href="#" className="card-header-icon" aria-label="more options">
-                                <span className="icon">
-                                    <i className="fas fa-angle-down" aria-hidden="true"></i>
-                                </span>
-                                </a>
-                            </header>
-                            <div className="card-content">
-                            <div className="content" >
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                                <a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
-                                <br/>
-                                <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-                                </div>
-                            </div>
-                            <footer className="card-footer">
-                                <a href="#" class="card-footer-item">Save</a>
-                                <a href="#" class="card-footer-item">Edit</a>
-                                <a href="#" class="card-footer-item">Delete</a>
-                            </footer>
-                        </div>
-                    </div>  
-                    <div className="column is-one-quarter">
-                        <div className="card">
-                            <header className="card-header">
-                                <p className="card-header-title">
-                                Component
-                                </p>
-                                <a href="#" className="card-header-icon" aria-label="more options">
-                                <span className="icon">
-                                    <i className="fas fa-angle-down" aria-hidden="true"></i>
-                                </span>
-                                </a>
-                            </header>
-                            <div className="card-content">
-                            <div className="content" >
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                                <a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
-                                <br/>
-                                <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-                                </div>
-                            </div>
-                            <footer className="card-footer">
-                                <a href="#" class="card-footer-item">Save</a>
-                                <a href="#" class="card-footer-item">Edit</a>
-                                <a href="#" class="card-footer-item">Delete</a>
-                            </footer>
-                        </div>
-                    </div> 
-                    <div className="column is-one-quarter">
-                        <div className="card">
-                            <header className="card-header">
-                                <p className="card-header-title">
-                                Component
-                                </p>
-                                <a href="#" className="card-header-icon" aria-label="more options">
-                                <span className="icon">
-                                    <i className="fas fa-angle-down" aria-hidden="true"></i>
-                                </span>
-                                </a>
-                            </header>
-                            <div className="card-content">
-                            <div className="content" >
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                                <a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
-                                <br/>
-                                <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-                                </div>
-                            </div>
-                            <footer className="card-footer">
-                                <a href="#" class="card-footer-item">Save</a>
-                                <a href="#" class="card-footer-item">Edit</a>
-                                <a href="#" class="card-footer-item">Delete</a>
-                            </footer>
-                        </div>
-                    </div>    
+                    ))}
+                    
+                        
                 </div>
             </div>
         </section>
