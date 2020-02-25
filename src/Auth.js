@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import app from "./firebase.js";
-//ma oleks tahtnud ise seda muuta :D
 export const AuthContext = React.createContext();
 
 export const AuthProvider = ({ children }) => {
@@ -8,7 +7,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     app.auth().onAuthStateChanged(setCurrentUser);
-  }, []);
+  }, [currentUser]);
 
   return (
     <AuthContext.Provider

@@ -1,8 +1,9 @@
 import React from 'react';
 import './textField.css';
+import { app } from 'firebase';
 const STYLE = [
-    'defaultIpnut',
-    'customInput'
+    'input',
+    'input is-rounded'
 ]
 const TextField = ({
     inputType,
@@ -10,17 +11,33 @@ const TextField = ({
     inputName,
     inputPlaceholder,
     onClick,
-    onChange
+    onChange,
+    id,
+    value
 }) => {
     const applyStyle = STYLE.includes(textStyle) ? textStyle : STYLE[0]
     return (
-        <input
-        className={applyStyle}
-        type={inputType}
-        name={inputName}
-        placeholder={inputPlaceholder}
-        onChange={onChange}
-        onClick={onClick}/>
+        <div className='field is-horizontal'>
+        <div className="field-label is-normal">
+            <label className="label">Eseme nimi</label>
+        </div>
+        <div className="field-body">
+            <div className="field">
+            <p className="control">
+                <input
+                    className={applyStyle}
+                    value={value}
+                    type={inputType}
+                    name={inputName}
+                    placeholder={inputPlaceholder}
+                    onChange={onChange}
+                    id={id}
+                    onClick={onClick}
+                />
+            </p>
+            </div>
+        </div>
+        </div>
     )
 }
 export default TextField;
