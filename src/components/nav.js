@@ -6,6 +6,7 @@ const Nav = () => {
         <ul>
             <li><Link to='/qrscan'> qr</Link></li>
             <li><Link to='/signup'> rega</Link></li>
+            <li><Link to='/QRManager'> manageeri</Link></li>
         </ul>
      );
 }

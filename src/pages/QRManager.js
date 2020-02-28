@@ -5,7 +5,7 @@ import firebase from "../firebase";
 const QRManager = () => {
     const [data, setData ] = useState('')
     const [items, setItems] = useState([]) 
-    
+    console.log(items);
     const handleQRValue=(e) => {
         e.preventDefault()
         setData(e.target.value)
@@ -38,6 +38,29 @@ const QRManager = () => {
             
         }
     }
+
+    const deleteItem = async(item) => {
+
+        try {
+            const deleteItem = firebase.firestore().collection("items").doc(item).delete()           
+            return deleteItem;
+        } catch (error) {
+            console.log(error);
+        }
+
+    }    
+
+    const doDownload = (svgId, name) => {
+        let svg = document.getElementById(svgId);
+        let converted = new XMLSerializer().serializeToString(svg)
+        let dataUrl = encodeURIComponent(converted)
+        let dl = document.createElement("a");
+        document.body.appendChild(dl); // This line makes it work in Firefox.
+        dl.setAttribute("href", `data:image/svg+xml, ${dataUrl}`);
+        dl.setAttribute("download", `${name}.svg`);
+        dl.click();
+    }
+    
 
     useEffect(() => {
         getItems();
@@ -103,13 +126,15 @@ const QRManager = () => {
                             <div className="content" >
                             <QRCodeGenerator 
                                 value={item.name}
-                                imageSettings={{excavate: true, height: 24,width: 24,src:'http://tmd.ee/wp-content/uploads/2018/03/favicon.ico'}}
-                            />                            </div>
+                                id = {item.id}
+                                imageSettings={{excavate: true, height: 24,width: 24}} renderAs='svg' includeMargin={true} level='H'
+                            />                            
+                            </div>
                             </div>
                             <footer className="card-footer">
-                                <a href="#" class="card-footer-item">Save</a>
-                                <a href="#" class="card-footer-item">Edit</a>
-                                <a href="#" class="card-footer-item">Delete</a>
+                                <a href="#" class="card-footer-item" onClick={() => doDownload(item.id, item.name)}>Save</a>
+                                {/* <a href="#" class="card-footer-item">Edit</a> */}
+                                <button class="card-footer-item" onClick={() => deleteItem(item.id)}>Delete</button>
                             </footer>
                         </div>
                     </div>  
