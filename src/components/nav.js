@@ -29,17 +29,8 @@ const Nav = () => {
                             </Link>
                         ))}
 
-
-
-
                     </div>
-
-
-
-
                 </div>
-
-
         </nav>
         
      );

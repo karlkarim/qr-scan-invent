@@ -31,8 +31,10 @@ const QRManager = () => {
 
     const addQR = async(qrItemName) => {
 
+        if (!qrItemName) return alert("Add some value!");
         try {
             const add = await firebase.firestore().collection("items").add({name: qrItemName})
+            setData('');
             return add;
         } catch (error) {
             
@@ -60,6 +62,8 @@ const QRManager = () => {
         dl.setAttribute("download", `${name}.svg`);
         dl.click();
     }
+
+    
     
 
     useEffect(() => {
@@ -86,7 +90,8 @@ const QRManager = () => {
                             <div class="field-body">   
                             <div class="field">       
                                 <p class="control">       
-                                    <input class="input" type="text" value={data} onChange={handleQRValue}/>    
+                                    <input class="input input is-danger" type="text" value={data} onChange={handleQRValue}/>  
+                                          
                                 </p>    
                             </div>   
                             </div> 
@@ -144,6 +149,9 @@ const QRManager = () => {
                 </div>
             </div>
         </section>
+
+
+        
         
       </div> ); 
 };

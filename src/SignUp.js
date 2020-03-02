@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import { withRouter } from "react-router";
 import app from "./firebase";
 import "./SignUp.css";
-import logo from './img/logo.png';
+import logo from './img/logo.svg';
 
 const SignUp = ({ history }) => {
   const handleSignUp = useCallback(async event => {
