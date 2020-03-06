@@ -14,7 +14,16 @@ const QRScan = () => {
     const handleError = err => {
         console.error(err)
     }
-    return (<div>
+    return (
+    
+    
+    
+    
+    
+    <div className="card">
+
+
+
         <QrReader
           delay={300}
           onError={handleError}
@@ -22,7 +31,10 @@ const QRScan = () => {
           style={{ width: '25%' }}
         />
         <p>{data}</p>
-      </div> );
+
+    </div> 
+      
+  );
 };
  
 export default QRScan;
