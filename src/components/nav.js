@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from "react-router-dom";
 import logo from '../img/logo.svg';
 import app from "../firebase";
+import {logOut} from '../services/authService' 
+
 
 
 
@@ -15,10 +17,11 @@ const linksArray = [
 ]
 
 
-
-
-
 const Nav = () => {
+    
+    const [navOpen, setNavOpen] = useState(false)
+    
+    const toggle = () => setNavOpen(!navOpen )
     return ( 
         // <ul>
         //     <li><Link to='/qrscan'> qr</Link></li>
@@ -30,13 +33,13 @@ const Nav = () => {
                 <a class="navbar-item" href="">
                     <img src={logo} width="112" height="28"/>
                 </a>
-                <a role="button" className="navbar-burger burger" is-active aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <a role="button" onClick={toggle} className={`navbar-burger burger ${navOpen ? 'is-active ' : ''}`} is-active aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
                 </a>
             </div>
-            <div id="navbarBasicExample" is-active class="navbar-menu">
+            <div id="navbarBasicExample" is-active class= {`navbar-menu ${navOpen ? 'is-active ' : ''}`}>
                 <div class="navbar-start">
                     {linksArray.map((link, index) =>(
                         <Link key={index} className='navbar-item' to={`${link.link}`}>
@@ -46,7 +49,7 @@ const Nav = () => {
                 </div>
                 <div class="navbar-end">
                     <div class="navbar-item">
-                    <Link className='nav-bar-item' onClick={() => app.auth().signOut()}>
+                    <Link className='nav-bar-item' onClick={logOut}>
                         Sign out
                     </Link>&nbsp;
                     </div>

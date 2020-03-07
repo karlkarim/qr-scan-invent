@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useGlobal, setGlobal, useEffect} from "reactn";
 // import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./Home";
@@ -10,11 +10,23 @@ import PrivateRoute from "./PrivateRoute";
 import QRManager from "./pages/QRManager";
 import Nav from './components/nav.js';
 const App = () => {
-  return (
+  const[loggedInUserData] = useGlobal('loggedInUserData')
+  const restoreUser = async() => {
+    const localUserData = localStorage.getItem('user-data')
+      if(localUserData){
+        await setGlobal({loggedInUserData : JSON.parse(localUserData)})
+      }
+  }
+
+  console.log(loggedInUserData);
+  useEffect(() => {
+    restoreUser()
+  },[loggedInUserData.length])
+   return (
     <AuthProvider>
       <Router>
         
-      <Nav />
+      {loggedInUserData.length !== 0 ? <Nav /> : '' } 
         <PrivateRoute exact path="/" component={Home} />
         <Route exact path="/qrscan" component={QRScan} />
         <Route exact path="/login" component={Login} />
