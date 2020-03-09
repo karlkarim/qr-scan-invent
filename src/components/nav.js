@@ -37,7 +37,7 @@ const Nav = () => {
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
-                </a>
+                </a> 
             </div>
             <div id="navbarBasicExample" is-active class= {`navbar-menu ${navOpen ? 'is-active ' : ''}`}>
                 <div class="navbar-start">

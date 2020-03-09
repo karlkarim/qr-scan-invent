@@ -28,10 +28,10 @@ const App = () => {
         
       {loggedInUserData.length !== 0 ? <Nav /> : '' } 
         <PrivateRoute exact path="/" component={Home} />
-        <Route exact path="/qrscan" component={QRScan} />
+        <PrivateRoute exact path="/qrscan" component={QRScan} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={SignUp} />
-        <Route exact path="/QRManager" component={QRManager} />
+        <PrivateRoute exact path="/QRManager" component={QRManager} />
     
       </Router>
     </AuthProvider>
