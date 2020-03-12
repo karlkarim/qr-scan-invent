@@ -32,7 +32,7 @@ const AddItemSection = () => {
     }
     return ( 
         <section>
-            <div className='card-wrapper inline-block'>
+            <div className='card-wrapper'>
                 <div className='qr-sample-root'>
                 <QRCode imageSettings={{excavate: true, height: 24,width: 24,src:`${logo}`}} renderAs='svg' includeMargin={true} level='H' value={qrValue} />
                 <p>{qrValue}</p>

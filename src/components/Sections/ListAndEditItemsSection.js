@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useGlobal } from 'reactn';
-import QRCard from '../../components/Cards/qrCard';
-import QRCode from 'qrcode.react';
 import Modal from '../../components/Modals/modal';
 import TextField from '../../components/TextField';
 import Button, { STYLES } from '../../components/Buttons/button';
-
+import './listItem.css'
 import firebase from '../../firebase';
-
+import { Link } from 'react-router-dom';
+import Loader from 'react-loader-spinner';
 
 const ListAndEditItems = () => {
     const [ loggedInUserData ] = useGlobal('loggedInUserData');
@@ -88,17 +87,35 @@ const ListAndEditItems = () => {
     return ( 
         <section>
             <div className='card-wrapper'>
-            {items.map( item => (
-                <div className='column' key={item.id}>
-            <QRCard
-                header={item.name}
-                content={<QRCode id={item.id} imageSettings={{excavate: true, height: 24,width: 24,src:'http://tmd.ee/wp-content/uploads/2018/03/favicon.ico'}} renderAs='svg' includeMargin={true} level='H' value={item.name} />}
-                btn1={ <Button buttonStyle={STYLES[7]} buttonSize={'is-normal'} onClick={() => handleModal(item.id, item.name)}>Edit&nbsp;<i className="far fa-edit"></i></Button>}
-                btn2={<Button buttonStyle={STYLES[5]} buttonSize={'is-normal'} onClick={() => deleteItem(item.id)}>Delete&nbsp;<i className="far fa-trash-alt"></i></Button>}
-                btn3={<Button className='download' buttonStyle={STYLES[4]} buttonSize={'is-normal'} onClick={() => doDownload(item.id, item.name)}>Download&nbsp;<i className="fas fa-download"></i></Button>}
-                />
-                </div>
-            ))}
+                {items.length ?
+                <div>
+                {items.map( item => (
+                    <div className='item-row' key={item.id}>
+                        <p className='item-title'>{item.name} <Link>View code</Link></p>
+                        <div className='item-actions'>
+                        <Button buttonStyle={STYLES[2]} buttonSize={'is-normal'} onClick={() => handleModal(item.id, item.name)}>Edit&nbsp;<i className="far fa-edit"></i></Button>
+                        <Button buttonStyle={STYLES[4]} buttonSize={'is-normal'} onClick={() => deleteItem(item.id)}>Delete&nbsp;<i className="far fa-trash-alt"></i></Button>
+                        <Button className='download' buttonStyle={STYLES[3]} buttonSize={'is-normal'} onClick={() => doDownload(item.id, item.name)}>Download&nbsp;<i className="fas fa-download"></i></Button>
+                        </div>
+                        {/* <QRCode id={item.id} imageSettings={{excavate: true, height: 24,width: 24,src:'http://tmd.ee/wp-content/uploads/2018/03/favicon.ico'}} renderAs='svg' includeMargin={true} level='H' value={item.name} /> */}
+                {/* <QRCard
+                    header={item.name}
+                    content={<QRCode id={item.id} imageSettings={{excavate: true, height: 24,width: 24,src:'http://tmd.ee/wp-content/uploads/2018/03/favicon.ico'}} renderAs='svg' includeMargin={true} level='H' value={item.name} />}
+                    btn1={ <Button buttonStyle={STYLES[7]} buttonSize={'is-normal'} onClick={() => handleModal(item.id, item.name)}>Edit&nbsp;<i className="far fa-edit"></i></Button>}
+                    btn2={<Button buttonStyle={STYLES[5]} buttonSize={'is-normal'} onClick={() => deleteItem(item.id)}>Delete&nbsp;<i className="far fa-trash-alt"></i></Button>}
+                    btn3={<Button className='download' buttonStyle={STYLES[4]} buttonSize={'is-normal'} onClick={() => doDownload(item.id, item.name)}>Download&nbsp;<i className="fas fa-download"></i></Button>}
+                    /> */}
+                    </div>
+                ))}</div> :
+                    <div style={{textAlign: 'center'}}>
+                <Loader
+                type="Puff"
+                color="#00BFFF"
+                height={100}
+                width={100}
+            />
+            </div>
+            }
             </div>
             <Modal
             modalState={dialogState}

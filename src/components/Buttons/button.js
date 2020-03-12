@@ -2,10 +2,10 @@ import React from 'react';
 import './button.css';
 export const STYLES = [
     "is-primary",
-    "btn is-link",
-    "btn is-info",
+    "btn-warning-solid",
+    "btn-primary-solid",
     "btn-secondary-solid",
-    "btn is-warning",
+    "btn-danger-solid",
     "btn is-danger",
     "is-primary is-outlined",
     "is-info is-outlined",

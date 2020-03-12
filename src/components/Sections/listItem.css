@@ -1,0 +1,15 @@
+.item-row {
+    border-bottom: #AFA9D0 solid .2px;
+    padding-bottom: 1em;
+}
+.item-title {
+    font-size: 1.2em;
+}
+.item-title a {
+    font-size: .8em;
+    text-decoration: none;
+    color: #2772AA;
+}
+.item-actions {
+    font-size: .8em;
+}

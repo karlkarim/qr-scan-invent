@@ -4,8 +4,8 @@ import './index.css';
 // import {logOut}  from '../../services/authServices'
 const linksArr = [
   {link: '/', name: 'Home', icon: 'fas fa-home'},
-    {link: '/manage-qr', name: 'Manage QR', icon: 'fas fa-qrcode'},
-    {link: '/manage-users', name: 'Manage Users', icon: 'fas fa-users-cog'},
+    {link: '/manage-qr', name: 'QR Items', icon: 'fas fa-qrcode'},
+    {link: '/manage-users', name: 'Users', icon: 'fas fa-users-cog'},
     {link: '/scan', name: 'Scan', icon: 'far fa-id-card'},
 ]
 

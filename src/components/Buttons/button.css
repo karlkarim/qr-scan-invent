@@ -2,11 +2,13 @@
     --primary: #004f5f;
     --secondary: #766aaf;
     --warning: #38c7a6;
-    --danger: #36e9fe;
+    --info: #36e9fe;
+    --danger: #D2214D;
 }
 
 .btn {
     border-radius: 6px;
+    outline: none;
     padding: .5rem .85rem;
     margin-top: .5rem;
     font-size: 1em;
