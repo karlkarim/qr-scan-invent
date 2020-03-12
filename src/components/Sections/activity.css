@@ -1,0 +1,32 @@
+.logs-root {
+    overflow: scroll;
+    max-height: 270px;
+    line-height: 1.2em;
+}
+.inline-block {
+    display: inline-block;
+}
+.log-entry {
+    font-size: 0.9em;
+    border-bottom: 1px dotted lightgrey;
+}
+.label {
+    color: #fff;
+    padding: 4px;
+    font-size: 0.7em;
+  }
+  
+  .success {background-color: #4CAF50;}
+  .info {background-color: #2196F3;} 
+  .warning {background-color: #ff9800;}
+  .danger {background-color: #f44336;} 
+  .other {background-color: #e7e7e7; color: black;}
+
+  .log-time {
+      font-size: 0.9em;
+      padding: 4px;
+  }
+  .log-link {
+      text-decoration: none;
+      color:#2772AA ;
+  }

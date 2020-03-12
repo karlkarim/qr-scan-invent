@@ -1,28 +1,45 @@
-import React from "react";
+import React, { useGlobal, setGlobal, useEffect } from "reactn";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./Home";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
-import ManageQR from './pages/ManageQrCodes';
+import ManageQR from './pages/admin/ManageQrCodes';
 import { AuthProvider } from "./Auth";
 import PrivateRoute from "./PrivateRoute";
 import './App.css'
 import Scan from './pages/scan';
-import NavBar from './components/NavBar/index';
+import BottomNav from './components/BottomNav';
+import ManageUsers from './pages/admin/manageUsers';
+import NotificationMsg from './components/Notification/index';
+import TopNav from './components/TopNav/index';
+
 
 const App = () => {
+  const [ loggedInUserData ] = useGlobal('loggedInUserData')
+  const [ notificationMsg ] = useGlobal('notificationMsg')
+  const restoreUser = async () => {
+  const data = localStorage.getItem('user-data')
+    if(data) {
+      await setGlobal({loggedInUserData: JSON.parse(data)})
+    }
+  }
+  useEffect(() => {
+    restoreUser()
+},[loggedInUserData.length])
   return (
     <AuthProvider>
-
       <Router>
-        {/* <Switch> */}
-          <NavBar />
+        {loggedInUserData.length !== 0  ? <BottomNav /> : ''}
+        {loggedInUserData.length !== 0  ? <TopNav /> : ''}
+        {notificationMsg.show === true ? <NotificationMsg /> : ''}
+        
           <PrivateRoute exact path="/" component={Home} />
           <PrivateRoute exact path='/manage-qr' component={ManageQR} /> 
+          <PrivateRoute exact path='/manage-users' component={ManageUsers} /> 
           <PrivateRoute exact path='/scan' component={Scan} /> 
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={SignUp} />
-        {/* </Switch> */}
+          
       </Router>
     </AuthProvider>
   );

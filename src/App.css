@@ -1,51 +1,50 @@
-html,body {
-    font-family: 'Questrial', sans-serif;
-    font-size: 14px;
-    font-weight: 300;
-  }
-  .hero.is-success {
-    background: #F2F6FA;
-  }
-  .hero .nav, .hero.is-success .nav {
-    -webkit-box-shadow: none;
-    box-shadow: none;
-  }
-  .box {
-    margin-top: 5rem;
-  }
-  .avatar {
-    margin-top: -70px;
-    padding-bottom: 20px;
-  }
-  .avatar img {
-    padding: 5px;
-    background: #fff;
-    border-radius: 50%;
-    -webkit-box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
-    box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
-  }
-  input {
-    font-weight: 300;
-  }
-  p {
-    font-weight: 700;
-  }
-  p.subtitle {
-    padding-top: 1rem;
-  }
-  
-  .login-hr{
-    border-bottom: 1px solid grey;
-  }
-  
-  .has-text-black{
-    color: black;
-  }
-  
-  .field{
-    padding-bottom: 10px;
-  }
-  
-  .fa{
-    margin-left: 5px; 
-  }
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #f0f2f5;
+  margin: 65px 0 0 0;
+}
+.is-clickable {
+  cursor: pointer;
+}
+.primary-light {
+  background-color: #EBFFFC;
+  color: #2F9580;
+}
+.purple-light {
+  background-color: #EEF3FC;
+  color: #2460C4;
+}
+.blue-light {
+  background-color: #EEF6FC;
+  color: #2772AA;
+}
+.green-light {
+  background-color: #EFFAF3;
+  color: #287A44;
+}
+.danger-light {
+  background-color: #FDECF0;
+  color: #D2214D;
+}
+.warning-light {
+  background-color: #FEFBEB;
+  color: #947500;
+}
+.raised {
+  box-shadow:0 3px 10px 4px rgba(0,0,0,0.04);
+  border-radius: 0.5rem;
+  padding: 15px;
+  margin-right: .75rem;
+}
+.flex-row {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.card-wrapper {
+  box-shadow:0 3px 10px 4px rgba(0,0,0,0.04);
+  background-color: #fff;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 4px;
+}

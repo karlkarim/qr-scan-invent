@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useGlobal } from 'reactn';
 import QRCode from 'qrcode.react';
-import TextField from '../components/TextField/textField';
-import Button, { STYLES } from '../components/Buttons/button';
-import firebase from '../firebase';
-import Modal from '../components/Modals/modal';
-import QRCard from '../components/Cards/qrCard';
-import logo from '../assets/tmdLogo.ico';
+import TextField from '../../components/TextField';
+import Button, { STYLES } from '../../components/Buttons/button';
+import firebase from '../../firebase';
+import Modal from '../../components/Modals/modal';
+import QRCard from '../../components/Cards/qrCard';
+import logo from '../../assets/tmdLogo.ico';
 
 const ManageQR = () => {
     const [qrValue, setQrValue] = useState('');
+    const [ loggedInUserData ] = useGlobal('loggedInUserData');
     const [items, setItems ] = useState([])
-    const [editItem, setEditItem ] = useState(false);
+    const [dialogState, setDialogState ] = useGlobal('dialogState');
     const [item, setItem ] = useState({
         id: '',
         name: ''
@@ -24,16 +25,23 @@ const ManageQR = () => {
         setItem({...item, name:e.target.value})
     }
     const handleModal = (id, itemName) => {
-        setEditItem(true);
+        setDialogState(!dialogState);
         setItem({id:id, name:itemName})
-        console.log(id, itemName, editItem)
 
     }
     const addQR = async (value) => {
         if(!value) return
         try {
-            const addQR = await firebase.firestore().collection('items').add({name: value})
-            return addQR;
+            const addQR = await firebase.firestore().collection('items').doc(value).set({name: value, satus: 'IN'})
+            setQrValue('')
+            const addLogs = await firebase.firestore().collection('activityLogs').add({
+                action: 'INSERT',
+                msg: 'Added new item',
+                user: `${loggedInUserData[0].firstName} ${loggedInUserData[0].lastName}`,
+                item: value,
+                created_at: new Date()
+            })
+            return (addQR, addLogs);
         } catch (error) {
             console.log(error);
         }
@@ -42,8 +50,15 @@ const ManageQR = () => {
         console.log(id, itemName)
         try {
             const update = await firebase.firestore().collection('items').doc(id).update({name:itemName})
-            setEditItem(false)
-            return update
+            const addLogs = await firebase.firestore().collection('activityLogs').add({
+                action: 'UPDATE',
+                msg: 'Updated item',
+                user: `${loggedInUserData[0].firstName} ${loggedInUserData[0].lastName}`,
+                item: itemName,
+                created_at: new Date()
+            })
+            setDialogState(!dialogState)
+            return (update, addLogs);
         } catch (error) {
             console.log(error)
         }
@@ -51,7 +66,14 @@ const ManageQR = () => {
     const deleteItem = async (item) => {
         try {
             const deleteItem = await firebase.firestore().collection('items').doc(item).delete()
-            return deleteItem
+            const addLogs = await firebase.firestore().collection('activityLogs').add({
+                action: 'DELETE',
+                msg: 'Deleted item',
+                user: `${loggedInUserData[0].firstName} ${loggedInUserData[0].lastName}`,
+                item: item,
+                created_at: new Date()
+            })
+            return (deleteItem, addLogs);
         } catch (error) {
             console.log(error);
         }
@@ -85,15 +107,13 @@ useEffect(() => {
     getItems();
 },[])
     return (
-    <div className="container">
-    <section className="section">
+    <section>
         <h1 className="title">Manage QR</h1>
-    </section>
     <section>
         <div className="columns is-desktop">
             <div className="column is-two-thirds">
             <div className="box">
-                <TextField textStyle='input' id='value' type='text' name='value' onChange={handleQrValue} value={qrValue}/>
+                <TextField error={qrValue ? false: true}textStyle='input' id='value' type='text' name='value' onChange={handleQrValue} value={qrValue}/>
                 <Button buttonStyle={STYLES[2]} buttonSize={'is-normal'} type="submit" onClick={() => addQR(qrValue)}>
                     Lisa
                 </Button>
@@ -114,9 +134,9 @@ useEffect(() => {
             <QRCard
                 header={item.name}
                 content={<QRCode id={item.id} imageSettings={{excavate: true, height: 24,width: 24,src:'http://tmd.ee/wp-content/uploads/2018/03/favicon.ico'}} renderAs='svg' includeMargin={true} level='H' value={item.name} />}
-                btn1={ <Button buttonStyle={STYLES[7]} buttonSize={'is-normal'} onClick={() => handleModal(item.id, item.name)}>Edit&nbsp;<i class="far fa-edit"></i></Button>}
-                btn2={<Button buttonStyle={STYLES[5]} buttonSize={'is-normal'} onClick={() => deleteItem(item.id)}>Delete&nbsp;<i class="far fa-trash-alt"></i></Button>}
-                btn3={<Button class='download' buttonStyle={STYLES[4]} buttonSize={'is-normal'} onClick={() => doDownload(item.id, item.name)}>Download&nbsp;<i class="fas fa-download"></i></Button>}
+                btn1={ <Button buttonStyle={STYLES[7]} buttonSize={'is-normal'} onClick={() => handleModal(item.id, item.name)}>Edit&nbsp;<i className="far fa-edit"></i></Button>}
+                btn2={<Button buttonStyle={STYLES[5]} buttonSize={'is-normal'} onClick={() => deleteItem(item.id)}>Delete&nbsp;<i className="far fa-trash-alt"></i></Button>}
+                btn3={<Button className='download' buttonStyle={STYLES[4]} buttonSize={'is-normal'} onClick={() => doDownload(item.id, item.name)}>Download&nbsp;<i className="fas fa-download"></i></Button>}
                 />
                 </div>
             ))}
@@ -124,7 +144,7 @@ useEffect(() => {
             </div>
         
         <Modal
-            modalState={editItem}
+            modalState={dialogState}
             header={item.id}
             body={
                 <>
@@ -134,10 +154,10 @@ useEffect(() => {
             actions={
                 <>
                 <Button onClick={() => updateItem(item.id, item.name)}>Update</Button>
-                <Button onClick={() => setEditItem(false)}>Cancel</Button>
+                <Button onClick={() => setDialogState(!dialogState)}>Cancel</Button>
                 </>
                 }/>
-        </div>
+        </section>
     )
 }
 

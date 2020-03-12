@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from "react";
+import React, { useCallback, useContext, setGlobal } from "reactn";
 import { withRouter, Redirect } from "react-router";
 import app from "../firebase.js";
 import { AuthContext } from "../Auth.js";
@@ -10,6 +10,13 @@ const Login = ({ history }) => {
       event.preventDefault();
       const { email, password } = event.target.elements;
       try {
+        const dbQuery = await app.firestore().collection('users').where('email', '==', email.value).get()
+        const userData = dbQuery.docs.map(user => ({
+          id: user.id,
+          ...user.data()
+        }))
+      localStorage.setItem('user-data', JSON.stringify(userData));
+      setGlobal({loggedInUserData: userData})
         await app
           .auth()
           .signInWithEmailAndPassword(email.value, password.value);
@@ -22,6 +29,7 @@ const Login = ({ history }) => {
   );
 
   const { currentUser } = useContext(AuthContext);
+  
   if (currentUser) {
     return <Redirect to="/" />;
   }

@@ -1,0 +1,21 @@
+.top-nav-root {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #2772AA;
+    color: #fff;
+    position: fixed;
+    box-shadow: 0 1px 2px #0000001a;
+    top: 0;
+    padding: 10px 10px;
+    width: 100%;
+  }
+
+  .nav-logo {
+    filter: brightness(0) invert(1);
+  }
+  .nav-actions {
+    margin-right: 20px;
+    font-size: 1.4em;
+  }

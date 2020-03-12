@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 
 const QRCard = ({header, content, btn1, btn2, btn3}) => {
     return ( 
@@ -12,7 +12,7 @@ const QRCard = ({header, content, btn1, btn2, btn3}) => {
     <div className="content" style={{textAlign: "center"}}>
       {content}
       <br />
-      <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+      <time dateTime="2016-1-1">11:09 PM - 1 Jan 2016</time>
     </div>
   </div>
   <footer className="card-footer">

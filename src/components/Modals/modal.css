@@ -1,32 +1,69 @@
-/* .overlay {
-    display: none;
+.dialog-root {
     position: fixed;
-    z-index: 9999;
-    background: rgb(0, 0, 0, 0.8);
-    animation-duration: 0.4s;
+    z-index: 1300;
+    right: 0px;
+    bottom: 0px;
+    top: 0px;
+    left: 0px;
+    
 }
-.open {
-    display: block;
+.backDrop {
     top: 0;
-    bottom:0;
-    left:0;
-    right:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    z-index: 0;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    -webkit-tap-highlight-color: transparent;
 }
-.modal {
-    width: 50%;
-    margin: 20% auto;
+.dialog-container {
+    height: 100%;
+    outline: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dialog-paper {
+    width: 600px;
+    display: flex;
+    max-height: calc(100% - 64px);
+    flex-direction: column;
+    margin: 32px;
+    position: relative;
+    overflow-y: auto;
+    border-radius: 4px;
     background: #fff;
-    border-radius: 8px;
+    box-shadow:  0px 11px 15px -7px rgba(0,0,0,0.2),
+                0px 24px 38px 3px rgba(0,0,0,0.14),
+                0px 9px 46px 8px rgba(0,0,0,0.12);
 }
-.modal-header {
-    padding: 1em 0.9em;
-    background: #004f5f;
-    border-radius: 6px 6px 0 0;
-    color: #fff;
+.dialog-title {
+    font-size: 1.25rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 500;
+    line-height: 1.6;
+    letter-spacing: 0.0075em;
+    flex: 0 0 auto;
+    margin: 0;
+    padding: 16px 24px;
 }
-.modal-body {
-    padding: 1em 0.9em;
+.dialog-content-root {
+    flex: 1 1 auto;
+    padding: 8px 24px;
+    overflow-y: auto;
 }
-.modal-actions {
-    padding: 1em 0.9em;
-} */
+.dialog-actions-root {
+    flex: 0 0 auto;
+    display: flex;
+    padding: 8px;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.not-active {
+    display: none;
+}

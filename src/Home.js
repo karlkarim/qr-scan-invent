@@ -1,13 +1,14 @@
-import React from 'react';
-import app from "./firebase";
+import React from 'reactn';
+import SummarySection from './components/Sections/SummarySections';
+import ActivitySection from './components/Sections/ActivitySection';
 
 const Home = () => {
+    
     return (
-        <>
-
-            <h1>Home page</h1>
-            <button onClick={() => app.auth().signOut()}>Sign Out</button>
-        </>    
+        <div className='container'>
+        <SummarySection />
+        <ActivitySection />          
+        </div>    
     );
 };
 

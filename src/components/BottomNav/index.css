@@ -1,0 +1,63 @@
+.nav-root {
+    height: 56px;
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1299;
+}
+.nav-menu-base-root {
+    color: inherit;
+    border: 0;
+    cursor: pointer;
+    margin: 0;
+    display: inline-flex;
+    outline: 0;
+    padding: 0;
+    position: relative;
+    align-items: center;
+    user-select: none;
+    border-radius: 0;
+    vertical-align: middle;
+    -moz-appearance: none;
+    justify-content: center;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+}
+.nav-button-root {
+    flex-grow: 1;
+    padding: 6px 12px 8px;
+    color: rgba(0, 0, 0, 0.54);
+    max-width: 168px;
+    min-width: 80px;
+}
+.nav-action-wrapper {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+a .nav-action-label {
+    opacity: 1;
+    font-size: 0.75rem;
+    transition: font-size 0.2s, opacity 0.2s;
+    transition-delay: 0.1s;
+}
+.nav-button-icon {
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    font-size: 1.6rem;
+}
+
+.button-selected {
+    color: #2772AA;
+    font-size: 0.875rem;
+}

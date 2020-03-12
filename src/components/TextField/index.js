@@ -1,6 +1,6 @@
 import React from 'react';
-import './textField.css';
-import { app } from 'firebase';
+
+
 const STYLE = [
     'input',
     'input is-rounded'
@@ -13,6 +13,7 @@ const TextField = ({
     onClick,
     onChange,
     id,
+    error,
     value
 }) => {
     const applyStyle = STYLE.includes(textStyle) ? textStyle : STYLE[0]
@@ -23,9 +24,9 @@ const TextField = ({
         </div>
         <div className="field-body">
             <div className="field">
-            <p className="control">
+            <div className="control">
                 <input
-                    className={applyStyle}
+                    className={error ? applyStyle + ' is-danger': applyStyle}
                     value={value}
                     type={inputType}
                     name={inputName}
@@ -34,7 +35,13 @@ const TextField = ({
                     id={id}
                     onClick={onClick}
                 />
-            </p>
+            </div>
+            {error ?     
+            <p class="help is-danger">
+                This field is required
+            </p> :
+            ''
+        }
             </div>
         </div>
         </div>

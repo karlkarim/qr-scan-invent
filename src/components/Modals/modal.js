@@ -1,22 +1,25 @@
-import React, { useState }  from 'react';
-import classNames from 'classnames';
+import React, { useGlobal }  from 'reactn';
+
 import './modal.css';
 
-const Modal = ({modalState, header, body, actions}) => {
+const Modal = ({ header, body, actions}) => {
+    const [ dialogState, setDialogState ] = useGlobal('dialogState');
+
     return(
-    <div style={{animationDuration: '0.2s'}} className={`modal animated  ${modalState? 'is-active fadeIn': 'fadeOut'}`}>
-        <div className='modal-background'></div>
-            <div className="modal-card">
-                <header className="modal-card-head">
-                <p className="modal-card-title">{header}</p>
-                <button className="delete" aria-label="close"></button>
-            </header>
-            <section className="modal-card-body">
+    <div style={{animationDuration: '0.2s'}} className={`dialog-root animated  ${dialogState? 'fadeIn': 'not-active fadeOut'}`}>
+        <div className='backDrop' onClick={() => setDialogState(!dialogState)}></div>
+            <div className='dialog-container'>
+            <div className='dialog-paper'>
+                <div className="dialog-title">
+                {header}
+            </div>
+            <div className='dialog-content-root'>
             {body}
-          </section>
-          <footer className="modal-card-foot">
+          </div>
+          <div className='dialog-actions-root'>
           {actions}
-          </footer>
+          </div>
+          </div>
             </div>
     </div>
     )

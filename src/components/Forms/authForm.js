@@ -1,5 +1,5 @@
 import React from 'react';
-import TextField from '../TextField/textField';
+
 import { Link } from 'react-router-dom';
 import Button from '../Buttons/button';
 import './authForm.css';
@@ -22,37 +22,60 @@ export const SIGNUP = [{
 }]
 const AuthForm = ({
     formType,
-    onSubmit
+    onSubmit,
+    emailErrorMsg,
+    usernameErrorMsg
 }) => {
     const checkFormType = formType === 'signup' ? SIGNUP[0] : LOGIN[0]
     return (
-        <section class="hero is-fullheight">
-        <div class="hero-body">
-            <div class="container has-text-centered">
-                <div class="column is-4 is-offset-4">
-                    <h3 class="title">{checkFormType.title}</h3>
-                    <hr class="login-hr" />
-                    <p class="subtitle">{checkFormType.subtitle}</p>
-                    <div class="box">
-                        <figure class="avatar">
-                            <img src={logo} />
+        <section className="hero is-fullheight">
+        <div className="hero-body">
+            <div className="container has-text-centered">
+                <div className="column is-4 is-offset-4">
+                    <h3 className="title">{checkFormType.title}</h3>
+                    <hr className="login-hr" />
+                    <p className="subtitle">{checkFormType.subtitle}</p>
+                    <div className="box">
+                        <figure className="avatar">
+                            <img src={logo} style={{borderRadius: 0}} alt={'logo'}/>
                         </figure>
                         <form onSubmit={onSubmit}>
-                            <div class="field">
-                                <div class="control">
-                                    <input class="input is-large" name='email' type="email" placeholder="Your Email" autofocus="" />
+                            <div className="field">
+                                <div className="control">
+                                    <input className="input is-large" name='email' type="email" placeholder="Your Email" autoFocus="" />
+                                </div>
+                                <p className="help is-danger">{emailErrorMsg}</p>
+                            </div>
+                            {formType === 'signup' ? 
+                            <>
+                                <div className="field">
+                                <div className="control">
+                                    <input className="input is-large" name='username' type="text" placeholder="Username" />
+                                </div>
+                                <p className="help is-danger">{usernameErrorMsg}</p>
+                            </div>
+                            <div className="field">
+                                <div className="control">
+                                    <input className="input is-large" name='fName' type="text" placeholder="First Name" />
                                 </div>
                             </div>
-
-                            <div class="field">
-                                <div class="control">
-                                    <input class="input is-large" name='password' type="password" placeholder="Your Password" />
+                            <div className="field">
+                                <div className="control">
+                                    <input className="input is-large" name='lName' type="text" placeholder="Last Name" />
                                 </div>
                             </div>
-                            <button class="button is-block is-info is-large is-fullwidth">{checkFormType.btnCTA} <i class="fa fa-sign-in" aria-hidden="true"></i></button>
+                            </>
+                             : ''
+                            }
+                            <div className="field">
+                                <div className="control">
+                                    <input className="input is-large" name='password' type="password" placeholder="Your Password" />
+                                </div>
+                            </div>
+                            <button className="button is-block is-info is-large is-fullwidth">{checkFormType.btnCTA} <i className="fa fa-sign-in" aria-hidden="true"></i></button>
                         </form>
                     </div>
-                    <p class="has-text-grey">
+                    <p className="has-text-grey">
                     <Link
                         to={checkFormType.navLink}
                         >{checkFormType.navLinkText}</Link>
@@ -61,39 +84,6 @@ const AuthForm = ({
             </div>
         </div>
     </section>
-
-
-
-
-    // <div className='container'>
-    //     <div className='logo'>
-    //         <img src={logo} alt='Logo' />
-    //     </div>
-    //     <div className='logo'>QR Inventory</div>
-    //     <h1 className='sign' align='center'>{checkFormType.title}</h1>
-    //     <div className='authContainer'>
-    //     <form className='authForm' onSubmit={onSubmit}>
-    //         <TextField textStyle='defaultIpnut' inputType='text' inputName='email' inputPlaceholder='Email'/>
-    //         <TextField textStyle='defaultIpnut' inputType='password' inputName='password'inputPlaceholder='Password'/>
-    //     <div className='formActionBtns'>
-    //         <Button buttonSize={'btn-medium'} buttonStyle={'btn-primary-outline'} isPill={true} type='submit'>{checkFormType.btnCTA}</Button>
-    //         {/* <Button buttonSize={'btn-medium'} buttonStyle={'btn-primary-outline'} isPill={true} type='submit'>{checkFormType.btnCTA}</Button> */}
-    //     </div>
-    //     </form>
-    //     </div>
-    //     <div style={{textAlign:'right',marginRight: '30px',
-    //         marginTop: '30px', paddingBottom: '30px'}}>
-    // <Link
-    //     to={checkFormType.navLink}
-    //     style={{
-    //         textDecoration:'none',
-    //         'a:visited': '#766aaf',
-    //         color: '#766aaf',
-    //         marginBottom: '30px'
-    //     }}
-    // >{checkFormType.navLinkText}</Link>
-    // </div>
-    // </div>
     )
 }
 
