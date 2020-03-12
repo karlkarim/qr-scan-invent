@@ -1,0 +1,8 @@
+.qr-sample-root {
+    display: flex;
+    align-items: center;
+}
+.form-actions {
+    display: flex;
+    flex-direction: column;
+}

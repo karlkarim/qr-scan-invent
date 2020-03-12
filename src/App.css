@@ -3,8 +3,15 @@ body {
   background-color: #f0f2f5;
   margin: 65px 0 0 0;
 }
+b {
+  font-weight: bold;
+  font-family: monospace;
+}
 .is-clickable {
   cursor: pointer;
+}
+.inline-block {
+  display: inline-block;
 }
 .primary-light {
   background-color: #EBFFFC;

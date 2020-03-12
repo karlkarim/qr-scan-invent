@@ -2,11 +2,11 @@ import React from 'react';
 import './button.css';
 export const STYLES = [
     "is-primary",
-    "button is-link",
-    "button is-info",
-    "button is-success",
-    "button is-warning",
-    "button is-danger",
+    "btn is-link",
+    "btn is-info",
+    "btn-secondary-solid",
+    "btn is-warning",
+    "btn is-danger",
     "is-primary is-outlined",
     "is-info is-outlined",
     "is-success is-outlined",
@@ -31,7 +31,7 @@ const Button = ({
     const checkPill = isPill ? 'isPill' : ''
     SIZE.includes()
     return (
-        <button className={`button ${checkSize} ${checkStyle} ${checkPill}`} type={type} onClick={onClick}>
+        <button className={`btn ${checkSize} ${checkStyle} ${checkPill}`} type={type} onClick={onClick}>
             {children}
         </button>
     )

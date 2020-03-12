@@ -6,16 +6,19 @@
 }
 
 .btn {
-    
-    padding: .375rem .75rem;
+    border-radius: 6px;
+    padding: .5rem .85rem;
+    margin-top: .5rem;
     font-size: 1em;
     text-align: center;
     vertical-align: middle;
     margin-right: 0.7em;
     color: #fff;
+    opacity: 0.6;
+    transition: 0.3s;
 }
 .btn:hover {
-    transform: translateY(-2px);
+    opacity: 1
 }
 .btn-primary-solid {
     background-color: var(--primary);

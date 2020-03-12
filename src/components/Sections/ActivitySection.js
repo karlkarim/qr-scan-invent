@@ -57,7 +57,7 @@ const ActivitySection = () => {
                         className='log-entry'
                         key={log.id}>
                             <span className={`label ${label(log.action)}`}>{log.action}</span>
-                            {log.msg} {log.item} by <Link to='' className='log-link'>{log.user}</Link> at
+                            {log.msg} <b>{log.item}</b> by <Link to='' className='log-link'>{log.user}</Link> 
                             <span className='log-time'>{moment.unix(log.created_at.seconds).fromNow()}</span>
                         </p>
                     )

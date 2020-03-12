@@ -3,9 +3,6 @@
     max-height: 270px;
     line-height: 1.2em;
 }
-.inline-block {
-    display: inline-block;
-}
 .log-entry {
     font-size: 0.9em;
     border-bottom: 1px dotted lightgrey;

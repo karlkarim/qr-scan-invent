@@ -10,6 +10,7 @@
     top: 0;
     padding: 10px 10px;
     width: 100%;
+    z-index: 1299;
   }
 
   .nav-logo {
