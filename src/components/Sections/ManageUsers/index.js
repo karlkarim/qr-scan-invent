@@ -62,9 +62,8 @@ const ManageUsers = () => {
                     <img src={defAvatar} alt={user.id}/>
                 </div>
                 <div className='user-info'>
-                    <div>
-                        {user.firstName}&nbsp;
-                        {user.lastName}
+                    <div>{user.firstName}&nbsp;{user.lastName}&nbsp;
+                        <span>(#{user.id})</span>
                     </div>
                     <div>
                     {user.email}

@@ -6,7 +6,7 @@
 }
 .id-card-root {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     padding: .3em;
     margin: .3em;
     min-width: 310px;
@@ -22,6 +22,10 @@
 .user-info {
     margin-left:15px;
     line-height: 1.5em;
+    font-size: .9em;
+}
+.user-info span {
+    font-size: .8em;
 }
 .action {
     

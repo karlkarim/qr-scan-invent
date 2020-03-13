@@ -11,7 +11,7 @@ const DEFAULT_GLOBAL_STATE = {
     itemScanned:[],
     notificationMsg: {
         show: false,
-        msg: 'sdfdsf',
+        msg: '',
         variant: 'success'
     }
 }

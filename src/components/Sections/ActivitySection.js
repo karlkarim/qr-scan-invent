@@ -45,6 +45,7 @@ const ActivitySection = () => {
     useEffect(() => {
         getActivityLogs();
         label('DELETE');
+        // eslint-disable-next-line
     },[])
     console.log(logs);
     return ( 

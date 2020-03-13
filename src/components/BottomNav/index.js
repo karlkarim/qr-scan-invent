@@ -1,4 +1,4 @@
-import React, { useGlobal, useState } from 'reactn';
+import React from 'reactn';
 import { Link, useLocation } from 'react-router-dom';
 import './index.css';
 // import {logOut}  from '../../services/authServices'

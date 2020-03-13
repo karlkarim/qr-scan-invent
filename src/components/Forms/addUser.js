@@ -1,17 +1,14 @@
-import React, { useGlobal, useState } from 'reactn';
+import React, { useGlobal, useState, useEffect } from 'reactn';
 import app from 'firebase'
 import TextField from '../TextField/index';
 import Button, { STYLES } from '../Buttons/button';
 
 const AddUserForm = ({userData}) => {
     const [ dialogState, setDialogState ] = useGlobal('dialogState')
+    // eslint-disable-next-line
     const [ msg, setMsg ] = useGlobal('notificationMsg');
-    const [uData, setUData ] = useState({
-        fname: userData ? userData.firstName : '',
-        lname: userData ? userData.lastName : ''
-    })
-    console.log(userData ? true : false)
-    console.log(uData)
+    const [uData, setUData ] = useState('')
+    const [ loggedInUserData ] = useGlobal('loggedInUserData');
     const handleDoalig = (type, msg) => {
 
         // setDialogState(!dialogState)
@@ -22,13 +19,11 @@ const AddUserForm = ({userData}) => {
     }
     const addNewUser = async event => {
         event.preventDefault();
-        console.log(event.target.elements)
         const { email, password, username, fName, lName } = event.target.elements;
         let message = `New user ${fName.value.concat(lName.value)} has been added!`;
 
         try {
-          await app
-            .auth()
+          const addUser = await app.auth()
             .createUserWithEmailAndPassword(email.value, password.value);
             app.firestore().collection('users').doc(username.value).set({
               firstName: fName.value,
@@ -36,7 +31,15 @@ const AddUserForm = ({userData}) => {
               email: email.value,
               dateCreated: Date.now()
             })
+            const addLogs = await app.firestore().collection('activityLogs').add({
+                action: 'INSERT',
+                msg: 'Added new user',
+                user: `${loggedInUserData[0].firstName} ${loggedInUserData[0].lastName}`,
+                item: `${fName.value} ${lName.value}`,
+                created_at: new Date()
+            })
             handleDoalig('success', message);
+            return (addUser, addLogs);
         } catch (error) {
             let message = error.message;
             handleDoalig('error', message);
@@ -44,24 +47,38 @@ const AddUserForm = ({userData}) => {
       }
       const handleEditValues = (e, id) => {
         setUData(e.target.value)
-        console.log(id)
     }
-    const editUser = async (id) => {
-        const event = window.event;
+    const editUser = async event => {
         event.preventDefault();
-        console.log(id)
-        console.log(event.target.elements)
-        // try {
-        //     console.log(fname.value)
-        //     const update = await app.firestore().collection('users').doc(id).update({firstName: fname.value,lastName:lname.value})
-        //     setDialogState(!dialogState)
-        //     return update
-        // } catch (error) {
-        //     console.log(error)
-        // }
+        const { email, fName, lName, uId } = event.target.elements;
+        let message = `User data updated !`;
+        try {
+            const update = await app.firestore()
+                .collection('users').doc(uId.value)
+                .update({ firstName: fName.value,lastName:lName.value, email: email.value })
+            const addLogs = await app.firestore().collection('activityLogs').add({
+                action: 'UPDATE',
+                msg: 'Updated user with an ID',
+                user: `${loggedInUserData[0].firstName} ${loggedInUserData[0].lastName}`,
+                item: uId.value,
+                created_at: new Date()
+            })
+            setDialogState(!dialogState)
+            handleDoalig('success', message);
+
+            return (update, addLogs)
+        } catch (error) {
+            console.log(error)
+            let message = error.message;
+            handleDoalig('success', message);
+        }
     }
-    console.log(userData)
+    useEffect(() => {
+        setUData(userData);
+    },[userData])
+
     return (
+        !userData ?
         <form onSubmit={addNewUser}>
             <div className="field">
             <label>First Name</label>
@@ -101,6 +118,36 @@ const AddUserForm = ({userData}) => {
                 />
                 </div>
             </div>
+        </form>
+        :
+        <form onSubmit={editUser}>
+        <input hidden value={uData.id} name='uId'/>
+        <div className="field">
+            <label>First Name</label>
+            <div className="">
+                <TextField value={uData ? uData.firstName: '??'} onChange={handleEditValues} inputName="fName" inputType="text" inputPlaceholder="First Name" />
+            </div>
+            </div>
+            <div className="field">
+            <label>Last Name</label>
+            <div className="">
+                <TextField value={uData ? uData.lastName: '??'} onChange={handleEditValues} inputName="lName" inputType="text" inputPlaceholder="Last Name" />
+            </div>
+            </div>
+            <div className="field">
+            <label>Email</label>
+            <div className="">
+                <TextField value={uData ? uData.email: '??'} onChange={handleEditValues} inputName="email" inputType="email" inputPlaceholder="Email" />
+            </div>
+            </div>
+            <div className='field'>
+            <div className=''>
+            <Button
+            buttonStyle={STYLES[3]}
+            children={<i className="far fa-save"></i>}
+            />
+            </div>
+        </div>
         </form>
      );
 }
