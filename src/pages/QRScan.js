@@ -19,20 +19,19 @@ const QRScan = () => {
     
     
     
+    <div className="container is-fluid">
     
-    <div className="card">
-
-
-
-        <QrReader
-          delay={300}
-          onError={handleError}
-          onScan={handleScan}
-          style={{ width: '25%' }}
-        />
-        <p>{data}</p>
-
-    </div> 
+      <div className="card">
+          <QrReader
+            delay={300}
+            onError={handleError}
+            onScan={handleScan}
+            style={{ width: '25%' }}
+          />
+          <p>{data}</p>
+      </div> 
+     
+    </div>
       
   );
 };
