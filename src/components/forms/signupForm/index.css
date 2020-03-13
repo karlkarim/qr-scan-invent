@@ -72,7 +72,7 @@ body {
     
   }
   
-  button {
+  .signupButton {
     cursor: pointer;
     border-radius: 5em;
     color: #fff;

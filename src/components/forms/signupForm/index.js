@@ -33,7 +33,7 @@ const SignUp = ({ history }) => {
             </div>
                 <input className="pass" align="center" name="password" type="password" placeholder="Password" />          
             <div>
-                <button type="submit">Sign Up</button>
+                <button className="signupButton" type="submit">Sign Up</button>
             </div>
       </form>
     </div>
