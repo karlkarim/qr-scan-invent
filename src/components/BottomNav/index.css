@@ -1,6 +1,7 @@
 .nav-root {
     height: 56px;
     display: flex;
+    border-top: solid 1px #0000001a;
     justify-content: center;
     background-color: #fff;
     width: 100%;

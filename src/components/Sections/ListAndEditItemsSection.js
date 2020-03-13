@@ -6,16 +6,19 @@ import './listItem.css'
 import firebase from '../../firebase';
 import { Link } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
-
+import QRCode from 'qrcode.react';
 const ListAndEditItems = () => {
     const [ loggedInUserData ] = useGlobal('loggedInUserData');
     const [dialogState, setDialogState ] = useGlobal('dialogState');
+    const [modalType, setModalType ] = useState('');
     const [items, setItems ] = useState([])
     const [item, setItem ] = useState({
         id: '',
         name: ''
     })
-    const handleModal = (id, itemName) => {
+    const handleModal = (mode, id, itemName) => {
+        setModalType(mode);
+        console.log(modalType);
         setDialogState(!dialogState);
         setItem({id:id, name:itemName})
 
@@ -91,9 +94,9 @@ const ListAndEditItems = () => {
                 <div>
                 {items.map( item => (
                     <div className='item-row' key={item.id}>
-                        <p className='item-title'>{item.name} <Link>View code</Link></p>
+                        <p className='item-title'>{item.name} <Link onClick={() => handleModal('qr-code', item.id, item.name)}>View code</Link></p>
                         <div className='item-actions'>
-                        <Button buttonStyle={STYLES[2]} buttonSize={'is-normal'} onClick={() => handleModal(item.id, item.name)}>Edit&nbsp;<i className="far fa-edit"></i></Button>
+                        <Button buttonStyle={STYLES[2]} buttonSize={'is-normal'} onClick={() => handleModal('edit', item.id, item.name)}>Edit&nbsp;<i className="far fa-edit"></i></Button>
                         <Button buttonStyle={STYLES[4]} buttonSize={'is-normal'} onClick={() => deleteItem(item.id)}>Delete&nbsp;<i className="far fa-trash-alt"></i></Button>
                         <Button className='download' buttonStyle={STYLES[3]} buttonSize={'is-normal'} onClick={() => doDownload(item.id, item.name)}>Download&nbsp;<i className="fas fa-download"></i></Button>
                         </div>
@@ -119,17 +122,22 @@ const ListAndEditItems = () => {
             </div>
             <Modal
             modalState={dialogState}
-            header={item.id}
+            header={modalType === 'edit' ? item.name : item.name}
             body={
-                <>
-                <TextField id='edit-item' type='text' onChange={handleEditValue} value={item.name} name='item-name' inputPlaceholder={item.name}/>
-                </>
+                    modalType === 'edit' ?
+                    <TextField id='edit-item' type='text' onChange={handleEditValue} value={item.name} name='item-name' inputPlaceholder={item.name}/>
+                    :
+                    <div style={{textAlign: 'center'}}>
+                    <QRCode id={item.id} imageSettings={{excavate: true, height: 24,width: 24,src:'http://tmd.ee/wp-content/uploads/2018/03/favicon.ico'}} renderAs='svg' includeMargin={true} level='H' value={item.name} />
+                    </div>
             }
             actions={
+                modalType === 'edit' ?
                 <>
-                <Button onClick={() => updateItem(item.id, item.name)}>Update</Button>
-                <Button onClick={() => setDialogState(!dialogState)}>Cancel</Button>
-                </>
+                <Button buttonStyle={STYLES[2]} onClick={() => updateItem(item.id, item.name)}>Update</Button>
+                <Button buttonStyle={STYLES[3]} onClick={() => setDialogState(!dialogState)}>Cancel</Button>
+                </> :
+                ''
                 }/>
         </section>
      );

@@ -1,0 +1,28 @@
+.header {
+    display: flex;
+    margin: .3em;
+    justify-content: space-between;
+    border-bottom: 1px solid #0000001a
+}
+.id-card-root {
+    display: flex;
+    justify-content: space-between;
+    padding: .3em;
+    margin: .3em;
+    min-width: 310px;
+}
+.avatar {
+    display: flex;
+    align-items: center;
+}
+.avatar img {
+    height: 50px;
+    width: 50px; 
+}
+.user-info {
+    margin-left:15px;
+    line-height: 1.5em;
+}
+.action {
+    
+}
