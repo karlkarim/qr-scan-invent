@@ -5,15 +5,9 @@ import app from "../../firebase";
 import {logOut} from '../../services/authService' 
 import "./BottomNav.css"
 
-
-
-
-
-
 const linksArray = [
     
     {link: '/', name: 'Home', icon: 'fa fa-fw fa-home'},
-    // {link: '/signup', name: 'SignUp'},
     {link: '/qrscan', name: 'QRScan', icon: 'fas fa-qrcode'},
     {link: '/QRManager', name: 'QRManager', icon: 'fas fa-tasks'}
 
@@ -24,7 +18,7 @@ const BottomNav = () => {
     const location = useLocation();
       return ( 
       <div className='nav-root'>
-      {linksArray.map((link, index) => (
+      {linksArray.map((link) => (
         <Link to={`${link.link}`} style={{textDecoration: 'none'}}>
         <button
         className={`nav-button-root nav-menu-base-root ${location.pathname === link.link ? 'button-selected': ''}`}>

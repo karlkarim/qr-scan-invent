@@ -9,6 +9,7 @@ import { AuthProvider } from "./components/auth/Auth";
 import PrivateRoute from "./PrivateRoute";
 import QRManager from "./pages/QRManager";
 import BottomNav from './components/bottomNav/BottomNav';
+import TopNav from './components/topNav/TopNav';
 
 
 const App = () => {
@@ -27,7 +28,7 @@ const App = () => {
    return (
     <AuthProvider>
       <Router>
-        
+        <TopNav/>
       {loggedInUserData.length !== 0 ? <BottomNav /> : '' } 
         <PrivateRoute exact path="/" component={Home} />
         <PrivateRoute exact path="/qrscan" component={QRScan} />
