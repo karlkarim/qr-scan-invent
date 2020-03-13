@@ -21,11 +21,11 @@ const TextField = ({
             placeholder={inputPlaceholder}
             onChange={onChange}
             id={id}
-            autocomplete="off"
+            autoComplete="off"
             onClick={onClick}
         />
         {error ?     
-        <p class="help is-danger">This field is required</p> :
+        <p className="help is-danger">This field is required</p> :
         ''
         }
         </>

@@ -1,5 +1,7 @@
 import React, { useGlobal, useState } from 'reactn';
 import app from 'firebase'
+import TextField from '../TextField/index';
+import Button, { STYLES } from '../Buttons/button';
 
 const AddUserForm = ({userData}) => {
     const [ dialogState, setDialogState ] = useGlobal('dialogState')
@@ -62,38 +64,41 @@ const AddUserForm = ({userData}) => {
     return (
         <form onSubmit={addNewUser}>
             <div className="field">
-            <label className="label">First Name</label>
-            <div className="control">
-                <input className="input" name="fName" type="text" placeholder="First Name" />
+            <label>First Name</label>
+            <div className="">
+                <TextField inputName="fName" inputType="text" inputPlaceholder="First Name" />
             </div>
             </div>
             <div className="field">
-            <label className="label">Last Name</label>
-            <div className="control">
-                <input className="input" name="lName" type="text" placeholder="Last Name" />
+            <label>Last Name</label>
+            <div className="">
+                <TextField inputName="lName" inputType="text" inputPlaceholder="Last Name" />
             </div>
             </div>
             <div className="field">
-            <label className="label">Email</label>
-            <div className="control">
-                <input className="input" name="email" type="text" placeholder="Email" />
+            <label>Email</label>
+            <div className="">
+                <TextField inputName="email" inputType="email" inputPlaceholder="Email" />
             </div>
             </div>
             <div className="field">
-            <label className="label">Username</label>
-            <div className="control">
-                <input className="input" name="username" type="text" placeholder="Username" />
+            <label>Username</label>
+            <div className="">
+                <TextField inputName="username" inputType="text" inputPlaceholder="Username" />
             </div>
             </div>
             <div className="field">
-            <label className="label">Password</label>
-            <div className="control">
-                <input className="input" name="password" type="password" placeholder="Password" />
+            <label>Password</label>
+            <div className="">
+                <TextField inputName="password" inputType="password" inputPlaceholder="Password" />
             </div>
             </div>
             <div className='field'>
-                <div className='control'>
-                <button className="button is-link">Save User&nbsp;<i className="far fa-save"></i></button>
+                <div className=''>
+                <Button
+                buttonStyle={STYLES[3]}
+                children={<i className="far fa-save"></i>}
+                />
                 </div>
             </div>
         </form>
