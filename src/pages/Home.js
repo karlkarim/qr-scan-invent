@@ -5,18 +5,22 @@ import myItems from '../img/myItems.svg';
 import allItems from '../img/allItems.svg';
 import cars from '../img/cars.svg';
 
+
 const Home = () => {
     return (
         <>
-        <section className="hero is-info is-medium ">
-            <div className="hero-body">
-                <div className="container has-text-centered">
-                    <h1 className="title">TM Development</h1>
-                    <h2 className="subtitle">QR Inventory</h2>
+        
+        <section className="hero-section">
+            <div className="hero-image">
+                <div className="hero-text">
+                    <h1>TMD</h1>
+                    <p>QR Inventory</p>
                 </div>
             </div>
         </section>
-            <br />
+
+
+        <br />
                 <section>
                     <div class="container">
                         <div class="tile is-ancestor">
@@ -66,8 +70,26 @@ const Home = () => {
                         </div>
                     </div>
         </section>
+        <h1>The grid layout</h1>
+
+            <div class="grid-container">
+            <button className="grid-button">Scan</button> 
+            <button className="grid-button">Siin on nupp2</button>
+           
+            <button className="grid-button">Siin on nupp3</button>
+           
+            <button className="grid-button">Siin on nupp4</button>  
+            
+            </div>
+        <section>
+
+
+        </section>
+
+
         </>    
     );
 };
 
 export default Home;
+        

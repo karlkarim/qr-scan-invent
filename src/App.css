@@ -1,39 +1,38 @@
-.App {
+body{ 
+  margin: 29px 0 0 0;
+}
+
+
+.hero-image {
+
+background-color: #fff;
+height: 200px;
+background-position: center;
+position: relative;
+}
+
+/* Place text in the middle of the image */
+.hero-text {
+text-align: center;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+color:black;
+font-size: x-large;
+}
+
+.grid-container {
+  display: grid;
+  grid-gap: 10px 10px;
+  grid-template-columns: auto auto;
+  padding: 10px;
+}
+
+.grid-button {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 10px 10px;
+  font-size: 15px;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
