@@ -1,11 +1,11 @@
 import React,{useGlobal, setGlobal, useEffect} from "reactn";
 // import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Home from "./Home";
-import Login from "./Login";
-import SignUp from "./SignUp";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
 import QRScan from "./pages/QRScan";
-import { AuthProvider } from "./Auth";
+import { AuthProvider } from "./components/auth/Auth";
 import PrivateRoute from "./PrivateRoute";
 import QRManager from "./pages/QRManager";
 import Nav from './components/nav.js';

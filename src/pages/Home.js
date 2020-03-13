@@ -1,7 +1,9 @@
 import React from 'react';
-import app from "./firebase";
-import scan from './img/scan.svg';
-import list_items from './img/list_items.svg';
+import app from "../firebase";
+import scan from '../img/scan.svg';
+import myItems from '../img/myItems.svg';
+import allItems from '../img/allItems.svg';
+import cars from '../img/cars.svg';
 
 const Home = () => {
     return (
@@ -22,7 +24,7 @@ const Home = () => {
                                         <div class="tile is-parent is-6">
                                             <article class="tile is-child box">
                                                 <p class="title">Scan</p>
-                                                <p class="subtitle">text here</p>
+                                                <p class="subtitle">Scan QR Code to borrow an item</p>
                                                 <figure class="image is-128x128">
                                                 <img src={scan} alt=""/>
                                                 </figure>
@@ -31,10 +33,10 @@ const Home = () => {
 
                                         <div class="tile is-parent is-6">
                                             <article class="tile is-child box">
-                                                <p class="title">Items</p>
-                                                <p class="subtitle">text here</p>
+                                                <p class="title">All Items</p>
+                                                <p class="subtitle">List of all the items</p>
                                             <figure class="image is-128x128">
-                                                <img src={list_items} alt=""/>
+                                                <img src={allItems} alt=""/>
                                             </figure>
                                             </article>
                                         </div>
@@ -44,9 +46,9 @@ const Home = () => {
                                         <div class="tile is-parent is-6">
                                             <article class="tile is-child box">
                                                 <p class="title"> My Items</p>
-                                                <p class="subtitle">text here</p>
+                                                <p class="subtitle">List of items you have borrowed</p>
                                                 <figure class="image is-128x128">
-                                                    <img src={list_items} alt=""/>
+                                                    <img src={myItems} alt=""/>
                                                 </figure>
                                             </article>
                                         </div>
@@ -54,9 +56,9 @@ const Home = () => {
                                         <div class="tile is-parent is-6">
                                              <article class="tile is-child box">
                                                 <p class="title">Cars</p>
-                                                <p class="subtitle">text here</p>
+                                                <p class="subtitle">List of cars</p>
                                                  <figure class="image is-128x128">
-                                                    <img src={scan} alt=""/>
+                                                    <img src={cars} alt=""/>
                                                 </figure>
                                             </article>
                                         </div>
