@@ -4,11 +4,11 @@ import Modal from '../../Modals/modal';
 import firebase from "../../../firebase";
 import './index.css';
 const ItemScan = () => {
-    const [scanned, setScanned] = useState('')
-
+  const [scanned, setScanned] = useState('')
 
   const handleScan = data => {
     if (data) {
+      // eslint-disable-next-line
       let item = data.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g,'_');
       let docRef = firebase.firestore().collection("items").doc(item);
 

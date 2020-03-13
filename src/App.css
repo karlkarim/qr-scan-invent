@@ -16,26 +16,32 @@ b {
 .primary-light {
   background-color: #EBFFFC;
   color: #2F9580;
+  border-left: #2F9580 2px solid;
 }
 .purple-light {
   background-color: #EEF3FC;
   color: #2460C4;
+  border-left: #2460C4 2px solid;
 }
 .blue-light {
   background-color: #EEF6FC;
   color: #2772AA;
+  border-left: #2772AA 2px solid;
 }
 .green-light {
   background-color: #EFFAF3;
   color: #287A44;
+  border-left: #287A44 2px solid;
 }
 .danger-light {
   background-color: #FDECF0;
   color: #D2214D;
+  border-left: #D2214D 2px solid;
 }
 .warning-light {
   background-color: #FEFBEB;
   color: #947500;
+  border-left: #947500 2px solid;
 }
 .raised {
   box-shadow:0 3px 10px 4px rgba(0,0,0,0.04);

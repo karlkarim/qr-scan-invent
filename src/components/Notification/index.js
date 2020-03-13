@@ -1,4 +1,5 @@
 import React, { useGlobal, useEffect } from 'reactn';
+import './index.css';
 
 const NotificationMsg = () => {
     const [ msg, setMsg ] = useGlobal('notificationMsg');
@@ -10,7 +11,7 @@ const NotificationMsg = () => {
         msgTimer()
     },[msg])
     return ( 
-    <div style={{zIndex: 99999}} id='snackbar' className={`notification ${msg.variant === 'success' ? 'is-success' : 'is-danger'} animated bounceInLeft`}>
+    <div style={{zIndex: 99999}} id='snackbar' className={`notification ${msg.variant === 'success' ? 'green-light' : 'danger-light'} animated bounceInLeft`}>
         <button className='delete' onClick={() => setMsg(!msg)}></button>
         {msg.msg}
     </div>

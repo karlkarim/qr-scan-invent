@@ -1,0 +1,9 @@
+.notification {
+    position: flex;
+    width: 100%;
+    height: 25px;
+    padding: 10px;
+}
+.gone {
+    display: none;
+}
