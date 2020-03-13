@@ -26,7 +26,7 @@ const ManageUsers = () => {
         if(mode === 'add') {
             console.log(mode)
             setDialogState(!dialogState)
-            setModalBody({header: 'Add new user', body: <AddUserForm />})
+            setModalBody({header: 'Add new user', body: <AddUserForm userData=''/>})
         }
         if(mode === 'edit') {
             console.log(mode)
@@ -76,7 +76,7 @@ const ManageUsers = () => {
                     <Button
                         onClick={() => handleModal('edit', user)}
                         children={<i class="fas fa-user-edit"></i>}
-                        buttonStyle={STYLES[3]}
+                        buttonStyle={STYLES[2]}
                         />
                     </div>
             </div>

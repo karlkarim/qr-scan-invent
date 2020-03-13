@@ -1,6 +1,6 @@
 import React from 'reactn';
-import SummarySection from './components/Sections/SummarySections';
-import ActivitySection from './components/Sections/ActivitySection';
+import SummarySection from '../components/Sections/SummarySections';
+import ActivitySection from '../components/Sections/ActivitySection';
 
 const Home = () => {
     

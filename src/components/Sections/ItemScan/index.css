@@ -1,0 +1,7 @@
+.qr-container-root {
+    display: flex;
+}
+.qr-container {
+    margin: auto;
+    width: 320px;
+}

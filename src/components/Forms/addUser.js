@@ -7,7 +7,7 @@ const AddUserForm = ({userData}) => {
     const [ dialogState, setDialogState ] = useGlobal('dialogState')
     // eslint-disable-next-line
     const [ msg, setMsg ] = useGlobal('notificationMsg');
-    const [uData, setUData ] = useState('')
+    const [uData, setUData ] = useState('');
     const [ loggedInUserData ] = useGlobal('loggedInUserData');
     const handleDoalig = (type, msg) => {
 
