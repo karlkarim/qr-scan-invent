@@ -5,3 +5,7 @@
     margin: auto;
     width: 320px;
 }
+.return-message p {
+    font-size: .8em;
+    opacity: .8;
+}
