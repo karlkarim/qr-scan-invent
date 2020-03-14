@@ -13,3 +13,10 @@
 .item-actions {
     font-size: .8em;
 }
+.item-desc {
+    font-size: .9em;
+}
+.item-desc svg {
+    font-size: 1.4em;
+    padding-right: .4em;
+}

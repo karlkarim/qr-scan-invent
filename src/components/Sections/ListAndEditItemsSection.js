@@ -93,6 +93,7 @@ const ListAndEditItems = () => {
     useEffect(() => {
         getItems();
     },[])
+    console.log(items);
     return ( 
         <section>
             <div className='card-wrapper'>
@@ -101,6 +102,10 @@ const ListAndEditItems = () => {
                 {items.map( item => (
                     <div className='item-row' key={item.id}>
                         <p className='item-title'>{item.name} <Link onClick={() => handleModal('qr-code', item.id, item.name)}>View code</Link></p>
+                        <p className='item-desc'>
+                            <i class={`${item.status === 'OUT' ? 'fas fa-sign-out-alt' : 'far fa-check-square'}`} style={item.status === 'OUT' ? {color: '#f44336'} : {color:'#4CAF50'}}></i>
+                            {item.status === 'OUT' ? `Item taken by ${item.takenBy}`: 'Item available'}
+                        </p>
                         <div className='item-actions'>
                         <Button buttonStyle={STYLES[2]} buttonSize={'is-normal'} onClick={() => handleModal('edit', item.id, item.name)}>Edit&nbsp;<i className="far fa-edit"></i></Button>
                         <Button buttonStyle={STYLES[4]} buttonSize={'is-normal'} onClick={() => deleteItem(item.id)}>Delete&nbsp;<i className="far fa-trash-alt"></i></Button>
