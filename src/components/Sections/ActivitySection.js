@@ -30,6 +30,7 @@ const ActivitySection = () => {
         try {
             firebase.firestore()
             .collection("activityLogs")
+            .orderBy("created_at", "desc").limit(10)
             .onSnapshot(items => {
                 const item = items.docs.map(doc => ({
                     id: doc.id,
