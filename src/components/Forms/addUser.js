@@ -2,6 +2,7 @@ import React, { useGlobal, useState, useEffect } from 'reactn';
 import app from 'firebase'
 import TextField from '../TextField/index';
 import Button, { STYLES } from '../Buttons/button';
+import './addUser.css';
 
 const AddUserForm = ({userData}) => {
     const [ dialogState, setDialogState ] = useGlobal('dialogState')
@@ -121,8 +122,11 @@ const AddUserForm = ({userData}) => {
             </div>
         </form>
         :
+        
         <form onSubmit={editUser}>
+        <div className='left-side'>
         <input hidden value={uData.id} name='uId'/>
+        <div className='side-title'>User info</div>
         <div className="field">
             <label>First Name</label>
             <div className="">
@@ -148,8 +152,20 @@ const AddUserForm = ({userData}) => {
             children={<i className="far fa-save"></i>}
             />
             </div>
-        </div>
+            </div>
+            </div>
+            <div className='vertical-line'></div>
+            <div className='right-side'>
+                <div className='side-title'>User permissions</div>
+            <input type="radio" id="admin" name="role" value="admin" />&nbsp;
+            <label htmlFor="admin">Admin</label>&nbsp;
+            <input type="radio" id="editor" name="role" value="editor" />&nbsp;
+            <label htmlFor="editor">Editor</label>&nbsp;
+            <input type="radio" id="user" name="role" value="user" />&nbsp;
+            <label htmlFor="user">User</label>&nbsp;
+            </div>
         </form>
+        
      );
 }
  

@@ -29,3 +29,11 @@
 .menu-closed {
     display: none;
 }
+.profile-menu-backDrop {
+    position: fixed;
+    display: flex;
+    left: -9999999px;
+    bottom: -9999999px;
+    top: 0;
+    right: 0;
+}
