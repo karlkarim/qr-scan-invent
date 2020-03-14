@@ -1,8 +1,49 @@
-.notification {
-    position: flex;
-    width: 100%;
-    height: 25px;
-    padding: 10px;
+.notification-root {
+    box-sizing: border-box;
+    max-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    pointer-events: none;
+    position: fixed;
+    z-index: 9000;
+    top: 4em;
+    right: 0px;
+    height: 64px;
+    padding: 8px;
+}
+.notification-content {
+    box-shadow: rgba(0, 0, 0, 0.176) 0px 3px 8px;
+    display: flex;
+    margin-bottom: 8px;
+    width: 300px;
+    border-radius: 4px;
+    transition: transform 220ms cubic-bezier(0.2, 0, 0, 1) 0s, opacity 220ms ease 0s;
+}
+.notification-type {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    color: rgb(227, 252, 239);
+    flex-shrink: 0;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    position: relative;
+    text-align: center;
+    width: 30px;
+    overflow: hidden;
+}
+.success {
+    background-color: rgb(54, 179, 126);
+}
+.error {
+    background-color: #D2214D;
+}
+.message {
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    font-size: 14px;
+    line-height: 1.4;
+    min-height: 40px;
+    padding: 8px 12px;
 }
 .gone {
     display: none;

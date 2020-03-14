@@ -9,7 +9,8 @@ const AddUserForm = ({userData}) => {
     const [ msg, setMsg ] = useGlobal('notificationMsg');
     const [uData, setUData ] = useState('');
     const [ loggedInUserData ] = useGlobal('loggedInUserData');
-    const handleDoalig = (type, msg) => {
+
+    const handleDialog = (type, msg) => {
 
         // setDialogState(!dialogState)
         type === 'success' ?
@@ -38,11 +39,11 @@ const AddUserForm = ({userData}) => {
                 item: `${fName.value} ${lName.value}`,
                 created_at: new Date()
             })
-            handleDoalig('success', message);
+            handleDialog('success', message);
             return (addUser, addLogs);
         } catch (error) {
             let message = error.message;
-            handleDoalig('error', message);
+            handleDialog('error', message);
         }
       }
       const handleEditValues = (e, id) => {
@@ -64,13 +65,13 @@ const AddUserForm = ({userData}) => {
                 created_at: new Date()
             })
             setDialogState(!dialogState)
-            handleDoalig('success', message);
+            handleDialog('success', message);
 
             return (update, addLogs)
         } catch (error) {
             console.log(error)
             let message = error.message;
-            handleDoalig('success', message);
+            handleDialog('success', message);
         }
     }
     useEffect(() => {

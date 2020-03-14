@@ -10,6 +10,7 @@ import QRCode from 'qrcode.react';
 const ListAndEditItems = () => {
     const [ loggedInUserData ] = useGlobal('loggedInUserData');
     const [dialogState, setDialogState ] = useGlobal('dialogState');
+    const [ msg, setMsg ] = useGlobal('notificationMsg');
     const [modalType, setModalType ] = useState('');
     const [items, setItems ] = useState([])
     const [item, setItem ] = useState({
@@ -43,6 +44,7 @@ const ListAndEditItems = () => {
         }
     }
     const deleteItem = async (item) => {
+        let message = `Item with id: ${item} was deleted !`
         try {
             const deleteItem = await firebase.firestore().collection('items').doc(item).delete()
             const addLogs = await firebase.firestore().collection('activityLogs').add({
@@ -52,13 +54,14 @@ const ListAndEditItems = () => {
                 item: item,
                 created_at: new Date()
             })
+            setMsg({show: true, msg:message, variant:'error'})
             return (deleteItem, addLogs);
         } catch (error) {
             console.log(error);
         }
     }
     const updateItem = async (id, itemName) => {
-        console.log(id, itemName)
+        let message = `Item with id: ${id} was renamed to ${itemName} !`
         try {
             const update = await firebase.firestore().collection('items').doc(id).update({name:itemName})
             const addLogs = await firebase.firestore().collection('activityLogs').add({
@@ -68,13 +71,15 @@ const ListAndEditItems = () => {
                 item: itemName,
                 created_at: new Date()
             })
-            setDialogState(!dialogState)
+            setMsg({show: true, msg:message, variant:'success'}) && setDialogState(!dialogState)
             return (update, addLogs);
         } catch (error) {
             console.log(error)
+            setMsg({show: true, msg:error, variant:'error'})
         }
     }
     const doDownload = (svgId, name) => {
+        let message = `Starting to download item: ${name} !`
         let svg = document.getElementById(svgId);
         let converted = new XMLSerializer().serializeToString(svg)
         let dataUrl = encodeURIComponent(converted)
@@ -83,6 +88,7 @@ const ListAndEditItems = () => {
         dl.setAttribute("href", `data:image/svg+xml, ${dataUrl}`);
         dl.setAttribute("download", `${name}.svg`);
         dl.click();
+        setMsg({show: true, msg:message, variant:'success'})
     }
     useEffect(() => {
         getItems();
@@ -100,7 +106,7 @@ const ListAndEditItems = () => {
                         <Button buttonStyle={STYLES[4]} buttonSize={'is-normal'} onClick={() => deleteItem(item.id)}>Delete&nbsp;<i className="far fa-trash-alt"></i></Button>
                         <Button className='download' buttonStyle={STYLES[3]} buttonSize={'is-normal'} onClick={() => doDownload(item.id, item.name)}>Download&nbsp;<i className="fas fa-download"></i></Button>
                         </div>
-                        {/* <QRCode id={item.id} imageSettings={{excavate: true, height: 24,width: 24,src:'http://tmd.ee/wp-content/uploads/2018/03/favicon.ico'}} renderAs='svg' includeMargin={true} level='H' value={item.name} /> */}
+                        <QRCode style={{display:'none'}} id={item.id} imageSettings={{excavate: true, height: 24,width: 24,src:'http://tmd.ee/wp-content/uploads/2018/03/favicon.ico'}} renderAs='svg' includeMargin={true} level='H' value={item.name} />
                 {/* <QRCard
                     header={item.name}
                     content={<QRCode id={item.id} imageSettings={{excavate: true, height: 24,width: 24,src:'http://tmd.ee/wp-content/uploads/2018/03/favicon.ico'}} renderAs='svg' includeMargin={true} level='H' value={item.name} />}

@@ -12,7 +12,7 @@ const DEFAULT_GLOBAL_STATE = {
     notificationMsg: {
         show: false,
         msg: '',
-        variant: 'success'
+        variant: ''
     }
 }
 setGlobal(DEFAULT_GLOBAL_STATE)

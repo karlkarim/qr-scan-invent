@@ -8,13 +8,15 @@ import './AddItem.css'
 const AddItemSection = () => {
     const [qrValue, setQrValue] = useState('');
     const [ loggedInUserData ] = useGlobal('loggedInUserData');
-
+    const [ msg, setMsg ] = useGlobal('notificationMsg');
+    
     const handleQrValue = (e) => {
         e.preventDefault();
         setQrValue(e.target.value)
     }
     const addQR = async (value) => {
         if(!value) return
+        let message = `Added new item ${value}`
         try {
             const addQR = await firebase.firestore().collection('items').doc(value).set({name: value, satus: 'IN'})
             setQrValue('')
@@ -25,9 +27,11 @@ const AddItemSection = () => {
                 item: value,
                 created_at: new Date()
             })
+            setMsg({show: true, msg:message, variant:'success'})
             return (addQR, addLogs);
         } catch (error) {
             console.log(error);
+            setMsg({show: true, msg:error, variant:'error'})
         }
     }
     return ( 
