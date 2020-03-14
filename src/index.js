@@ -8,6 +8,7 @@ const DEFAULT_GLOBAL_STATE = {
     loggedInUserData: [],
     activeNavIndex: 0,
     dialogState: false,
+    profileMenuState: false,
     itemScanned:[],
     notificationMsg: {
         show: false,

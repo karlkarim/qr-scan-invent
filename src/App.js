@@ -12,6 +12,7 @@ import BottomNav from './components/BottomNav';
 import ManageUsers from './pages/admin/manageUsers';
 import NotificationMsg from './components/Notification/index';
 import TopNav from './components/TopNav/index';
+import ProfileMenu from "./components/ProfileMenu";
 
 
 const App = () => {
@@ -32,7 +33,7 @@ const App = () => {
         {loggedInUserData.length !== 0  ? <BottomNav /> : ''}
         {loggedInUserData.length !== 0  ? <TopNav /> : ''}
         {notificationMsg.show === true ? <NotificationMsg /> : ''}
-        
+        {loggedInUserData.length !== 0  ? <ProfileMenu /> : ''}
           <PrivateRoute exact path="/" component={Home} />
           <PrivateRoute exact path='/manage-qr' component={ManageQR} /> 
           <PrivateRoute exact path='/manage-users' component={ManageUsers} /> 
