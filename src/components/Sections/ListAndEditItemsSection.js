@@ -4,12 +4,12 @@ import TextField from '../../components/TextField';
 import Button, { STYLES } from '../../components/Buttons/button';
 import './listItem.css'
 import firebase from '../../firebase';
-import { Link } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
 import QRCode from 'qrcode.react';
 const ListAndEditItems = () => {
     const [ loggedInUserData ] = useGlobal('loggedInUserData');
     const [dialogState, setDialogState ] = useGlobal('dialogState');
+    // eslint-disable-next-line no-unused-vars
     const [ msg, setMsg ] = useGlobal('notificationMsg');
     const [modalType, setModalType ] = useState('');
     const [items, setItems ] = useState([])

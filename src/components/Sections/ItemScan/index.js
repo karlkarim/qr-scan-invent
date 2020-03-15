@@ -1,4 +1,4 @@
-import React, { useState, useGlobal, setGlobal } from 'reactn';
+import React, { useState, useGlobal } from 'reactn';
 import QrReader from 'react-qr-reader'
 import Modal from '../../Modals/modal';
 import firebase from "../../../firebase";
@@ -6,9 +6,11 @@ import './index.css';
 import Button, { STYLES } from '../../Buttons/button';
 
 const ItemScan = () => {
-  // const [dialogState, setdialogState] = useState('')
+  
+  // eslint-disable-next-line no-unused-vars
   const [ dialogState, setDialogState ] = useGlobal('dialogState');
   const [ loggedInUserData ] = useGlobal('loggedInUserData');
+  // eslint-disable-next-line no-unused-vars
   const [ msg, setMsg ] = useGlobal('notificationMsg');
   const [ item, setItem ] = useState('')
   const [ returnItem, setReturnItem ] = useState(false)
