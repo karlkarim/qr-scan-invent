@@ -15,7 +15,7 @@ const ProfileMenu = () => {
             <div onClick={() => handleMenuState()} className='profile-menu-backDrop'></div>
             <div className='menu-close'>
                 <div onClick={() => handleMenuState()}>
-                <i class="far fa-times-circle"></i>
+                <i className="far fa-times-circle"></i>
                 </div>
                 <p>{loggedInUserData[0].firstName}</p>
             </div>

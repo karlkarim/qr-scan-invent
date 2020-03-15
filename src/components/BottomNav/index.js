@@ -14,7 +14,7 @@ const BottomNav = () => {
     return ( 
     <div className='nav-root'>
     {linksArr.map((link, index) => (
-      <Link to={`${link.link}`} style={{textDecoration: 'none'}}>
+      <Link key={index} to={`${link.link}`} style={{textDecoration: 'none'}}>
       <button
       className={`nav-button-root nav-menu-base-root ${location.pathname === link.link ? 'button-selected': ''}`}>
       <span className='nav-action-wrapper'>

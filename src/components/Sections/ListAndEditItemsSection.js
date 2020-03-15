@@ -101,9 +101,9 @@ const ListAndEditItems = () => {
                 <div>
                 {items.map( item => (
                     <div className='item-row' key={item.id}>
-                        <p className='item-title'>{item.name} <Link onClick={() => handleModal('qr-code', item.id, item.name)}>View code</Link></p>
+                        <p className='item-title'>{item.name} <span onClick={() => handleModal('qr-code', item.id, item.name)}>View code</span></p>
                         <p className='item-desc'>
-                            <i class={`${item.status === 'OUT' ? 'fas fa-sign-out-alt' : 'far fa-check-square'}`} style={item.status === 'OUT' ? {color: '#f44336'} : {color:'#4CAF50'}}></i>
+                            <i className={`${item.status === 'OUT' ? 'fas fa-sign-out-alt' : 'far fa-check-square'}`} style={item.status === 'OUT' ? {color: '#f44336'} : {color:'#4CAF50'}}></i>
                             {item.status === 'OUT' ? `Item taken by ${item.takenBy}`: 'Item available'}
                         </p>
                         <div className='item-actions'>

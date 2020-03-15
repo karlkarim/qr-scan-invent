@@ -9,7 +9,7 @@ const TopNav = () => {
                 <img src={logo} alt='tmx logo'/>
             </div>
             <div onClick={() => setMenuOpen(!menuOpen)} className='nav-actions'>
-            <i class="far fa-user-circle"></i>
+            <i className="far fa-user-circle"></i>
             </div>
         </div>
      );

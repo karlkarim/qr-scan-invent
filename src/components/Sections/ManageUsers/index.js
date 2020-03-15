@@ -75,7 +75,7 @@ const ManageUsers = () => {
                     <div className='action'>
                     <Button
                         onClick={() => handleModal('edit', user)}
-                        children={<i class="fas fa-user-edit"></i>}
+                        children={<i className="fas fa-user-edit"></i>}
                         buttonStyle={STYLES[2]}
                         />
                     </div>

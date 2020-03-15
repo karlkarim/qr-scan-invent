@@ -8,12 +8,18 @@ const AddUserForm = ({userData}) => {
     const [ dialogState, setDialogState ] = useGlobal('dialogState')
     // eslint-disable-next-line
     const [ msg, setMsg ] = useGlobal('notificationMsg');
-    const [uData, setUData ] = useState('');
+    const [uData, setUData ] = useState(userData);
     const [ loggedInUserData ] = useGlobal('loggedInUserData');
-
+    const [ radioChecked, setRadioChecked ] = useState(userData.role);
+    
+    const handleRadio = (event) => {
+       if(event) {
+           console.log(event.target.value)
+           setRadioChecked(event.target.value);
+       }
+    }
+    console.log('muuda',radioChecked)
     const handleDialog = (type, msg) => {
-
-        // setDialogState(!dialogState)
         type === 'success' ?
         setMsg({show: true, msg:msg, variant:'success'}) && setDialogState(!dialogState) :
         setMsg({show: true, msg:msg, variant:''})
@@ -21,7 +27,7 @@ const AddUserForm = ({userData}) => {
     }
     const addNewUser = async event => {
         event.preventDefault();
-        const { email, password, username, fName, lName } = event.target.elements;
+        const { email, password, username, fName, lName, role } = event.target.elements;
         let message = `New user ${fName.value.concat(lName.value)} has been added!`;
 
         try {
@@ -31,6 +37,7 @@ const AddUserForm = ({userData}) => {
               firstName: fName.value,
               lastName: lName.value,
               email: email.value,
+              role: role.value,
               dateCreated: Date.now()
             })
             const addLogs = await app.firestore().collection('activityLogs').add({
@@ -52,12 +59,12 @@ const AddUserForm = ({userData}) => {
     }
     const editUser = async event => {
         event.preventDefault();
-        const { email, fName, lName, uId } = event.target.elements;
+        const { email, fName, lName, uId, role } = event.target.elements;
         let message = `User data updated !`;
         try {
             const update = await app.firestore()
                 .collection('users').doc(uId.value)
-                .update({ firstName: fName.value,lastName:lName.value, email: email.value })
+                .update({ firstName: fName.value,lastName:lName.value, role: role.value, email: email.value })
             const addLogs = await app.firestore().collection('activityLogs').add({
                 action: 'UPDATE',
                 msg: 'Updated user with an ID',
@@ -77,11 +84,13 @@ const AddUserForm = ({userData}) => {
     }
     useEffect(() => {
         setUData(userData);
+        setRadioChecked(userData.role)
     },[userData])
 
     return (
         !userData ?
         <form onSubmit={addNewUser}>
+            <div className='left-side'>
             <div className="field">
             <label>First Name</label>
             <div className="">
@@ -120,7 +129,20 @@ const AddUserForm = ({userData}) => {
                 />
                 </div>
             </div>
+            
+            </div>
+            <div className='vertical-line'></div>
+            <div className='right-side'>
+                <div className='side-title'>User permissions</div>
+            <input type="radio" id="admin" name="role" value="admin" />&nbsp;
+            <label htmlFor="admin">Admin</label>&nbsp;
+            <input type="radio" id="editor" name="role" value="editor" />&nbsp;
+            <label htmlFor="editor">Editor</label>&nbsp;
+            <input type="radio" id="user" name="role" value="user" />&nbsp;
+            <label htmlFor="user">User</label>&nbsp;
+            </div>
         </form>
+        
         :
         
         <form onSubmit={editUser}>
@@ -157,11 +179,11 @@ const AddUserForm = ({userData}) => {
             <div className='vertical-line'></div>
             <div className='right-side'>
                 <div className='side-title'>User permissions</div>
-            <input type="radio" id="admin" name="role" value="admin" />&nbsp;
+            <input onChange={handleRadio} checked={radioChecked === 'admin'} type="radio" id="admin" name="role" value="admin" />&nbsp;
             <label htmlFor="admin">Admin</label>&nbsp;
-            <input type="radio" id="editor" name="role" value="editor" />&nbsp;
+            <input onChange={handleRadio} checked={radioChecked === 'editor'} type="radio" id="editor" name="role" value="editor" />&nbsp;
             <label htmlFor="editor">Editor</label>&nbsp;
-            <input type="radio" id="user" name="role" value="user" />&nbsp;
+            <input onChange={handleRadio} checked={radioChecked === 'user'} type="radio" id="user" name="role" value="user" />&nbsp;
             <label htmlFor="user">User</label>&nbsp;
             </div>
         </form>
