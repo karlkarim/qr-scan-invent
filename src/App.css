@@ -1,5 +1,8 @@
 body{ 
-  margin: 29px 0 0 0;
+  /* margin: 29px 15px 70px 15px; */
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+
 }
 
 
@@ -10,12 +13,22 @@ height: 200px;
 background-position: center;
 position: relative;
 }
+.card-wrapper {
+  box-shadow:0 3px 10px 4px rgba(0,0,0,0.04);
+  background-color: #fff;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 4px;
+}
+
+
+
 
 /* Place text in the middle of the image */
 .hero-text {
 text-align: center;
 position: absolute;
-top: 50%;
+top: 80%;
 left: 50%;
 transform: translate(-50%, -50%);
 color:black;
@@ -23,16 +36,33 @@ font-size: x-large;
 }
 
 .grid-container {
-  display: grid;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  /* display: grid;
   grid-gap: 10px 10px;
-  grid-template-columns: auto auto;
-  padding: 10px;
+  grid-template-columns: 500px 500px; */
+  /* padding: 10px; */
+
 }
 
 .grid-button {
   background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(0, 0, 0, 0.8);
-  padding: 10px 10px;
+  padding: 32px 32px;
+  margin:10px;
   font-size: 15px;
   text-align: center;
+  width: 160px;
+  /* height: 200px; */
+  
 }
+.flex-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
+
+
