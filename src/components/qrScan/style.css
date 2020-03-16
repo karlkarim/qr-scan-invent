@@ -1,0 +1,19 @@
+.qrcard-container{
+    border-radius: 5px;
+    padding-top: 25px;
+    background-color: #2772AA;
+    background-image: linear-gradient(0deg, #2772AA 0%, #27aaa1 100%);
+}
+
+.qrcard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.qrHero {
+    margin-top: 75px;
+    vertical-align: text-top;
+    text-align: center;
+}
