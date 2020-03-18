@@ -6,7 +6,8 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 const DEFAULT_GLOBAL_STATE = {
-    loggedInUserData : []
+    loggedInUserData : [],
+    profileMenuState : false
 } 
 setGlobal(DEFAULT_GLOBAL_STATE)
 

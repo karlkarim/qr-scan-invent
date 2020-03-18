@@ -10,6 +10,7 @@ import PrivateRoute from "./PrivateRoute";
 import QRManager from "./pages/QRManager";
 import BottomNav from './components/bottomNav/BottomNav';
 import TopNav from './components/topNav/TopNav';
+import ProfileMenu from './components/profileMenu';
 
 
 const App = () => {
@@ -29,7 +30,9 @@ const App = () => {
     <AuthProvider>
       <Router>
         <TopNav/>
-      {loggedInUserData.length !== 0 ? <BottomNav /> : '' } 
+        
+      {loggedInUserData.length !== 0 ? <BottomNav /> : '' }
+      {loggedInUserData.length !== 0 ? <ProfileMenu /> : '' } 
         <PrivateRoute exact path="/" component={Home} />
         <PrivateRoute exact path="/qrscan" component={QRScan} />
         <Route exact path="/login" component={Login} />
