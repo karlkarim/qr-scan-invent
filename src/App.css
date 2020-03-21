@@ -13,6 +13,7 @@ height: 200px;
 background-position: center;
 position: relative;
 }
+
 .card-wrapper {
   box-shadow:0 3px 10px 4px rgba(0,0,0,0.04);
   background-color: #fff;

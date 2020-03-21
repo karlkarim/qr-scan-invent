@@ -29,10 +29,11 @@ const App = () => {
    return (
     <AuthProvider>
       <Router>
-        <TopNav/>
+      
         
+      {loggedInUserData.length !== 0 ? <TopNav /> : '' } 
       {loggedInUserData.length !== 0 ? <BottomNav /> : '' }
-      {loggedInUserData.length !== 0 ? <ProfileMenu /> : '' } 
+      {loggedInUserData.length !== 0 ? <ProfileMenu /> : '' }
         <PrivateRoute exact path="/" component={Home} />
         <PrivateRoute exact path="/qrscan" component={QRScan} />
         <Route exact path="/login" component={Login} />

@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { withRouter } from "react-router";
 import app from "../../../firebase.js";
-import "./index.css";
+import "../loginForm/index.css";
 import logo from '../../../img/logo.svg';
 
 const SignUp = ({ history }) => {
@@ -33,7 +33,7 @@ const SignUp = ({ history }) => {
             </div>
                 <input className="pass" align="center" name="password" type="password" placeholder="Password" />          
             <div>
-                <button className="signupButton" type="submit">Sign Up</button>
+                <button className="formButton" type="submit">Sign Up</button>
             </div>
       </form>
     </div>

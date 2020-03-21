@@ -10,7 +10,6 @@ const linksArray = [
     {link: '/', name: 'Home', icon: 'fa fa-fw fa-home'},
     {link: '/qrscan', name: 'QRScan', icon: 'fas fa-qrcode'},
     {link: '/QRManager', name: 'QRManager', icon: 'fas fa-tasks'}
-
 ]
 
 

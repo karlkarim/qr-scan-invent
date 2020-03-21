@@ -1,7 +1,6 @@
 import React, {useGlobal} from 'reactn'
 import './style.css'
-
-
+import {logOut} from '../../services/authService'
 
 const ProfileMenu = () => {
     
@@ -26,7 +25,7 @@ const ProfileMenu = () => {
             <div className="profilemenu-dropdown">
                 <p>Manage Profile</p>
                 <p>My Items</p>
-                <p>Sign Out</p>
+                <p onClick={() => logOut()}>Sign Out</p>
             </div>
 
         </div>

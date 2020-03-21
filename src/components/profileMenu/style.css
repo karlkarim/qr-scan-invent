@@ -33,4 +33,5 @@
     bottom: -9999999px;
     top: 0;
     right: 0;
+    z-index: -1;
 }

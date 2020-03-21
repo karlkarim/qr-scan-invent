@@ -4,6 +4,8 @@ import app from "../../../firebase.js";
 import { AuthContext } from "../../auth/Auth";
 import logo from '../../../img/logo.svg';
 import "./index.css";
+import { Link } from "react-router-dom";
+
 
 const Login = ({ history }) => {
   const handleLogin = useCallback(
@@ -51,9 +53,13 @@ const Login = ({ history }) => {
             </div>
                 <input className="pass" align="center" name="password" type="password" placeholder="Password" />          
             <div>
-                <button className="loginButton" type="submit">Login</button>
+                <button className="formButton" type="submit">Login</button>
             </div>
       </form>
+
+      <div className="signup-link">
+        <Link to = '/signup'>Don't have an account?Sign up here</Link>
+      </div>
 
       {/* <form onSubmit={handleLogin}>
         <label>

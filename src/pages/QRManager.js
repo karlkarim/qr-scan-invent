@@ -70,7 +70,7 @@ const QRManager = () => {
         getItems();
     }, [])
 
-    return (<div className="container">
+    return (<div className="">
             <section>
                 
                 <div className="content">
@@ -79,18 +79,18 @@ const QRManager = () => {
                 </div>
             </section>
             <section>
-                <div className="columns is-desktop">
+                <div className="hero-image">
                     
-                    <div className="column is-two-thirds ">
-                        <div className="box">
+                    <div className="column">
+                        <div className="hero-section">
                             <div className="field is-horizontal">   
-                                <div class="field-label is-normal">     
+                                <div class="field-label">     
                                     <label class="label">Eseme nimi</label>  
                                 </div> 
                             <div class="field-body">   
                             <div class="field">       
                                 <p class="control">       
-                                    <input class="input input is-danger" type="text" value={data} onChange={handleQRValue}/>  
+                                    <input class="input" type="text" value={data} onChange={handleQRValue}/>  
                                           
                                 </p>    
                             </div>   
@@ -112,10 +112,10 @@ const QRManager = () => {
              </section>
         <section>
             <div className="container">
-                <div className="columns is-multiline">
+                <div className="columns">
                     {items.map(item => (
 
-                    <div className="column is-one-quarter">
+                    <div className="column">
                         <div className="card">
                             <header className="card-header">
                                 <p className="card-header-title">
