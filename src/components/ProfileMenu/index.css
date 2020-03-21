@@ -32,6 +32,7 @@
 .profile-menu-backDrop {
     position: fixed;
     display: flex;
+    z-index: -1;
     left: -9999999px;
     bottom: -9999999px;
     top: 0;

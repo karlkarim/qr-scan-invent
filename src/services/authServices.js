@@ -6,4 +6,5 @@ export const logOut = () => {
     app.auth().signOut();
     localStorage.removeItem('user-data')
     setGlobal({loggedInUserData: []})
+    setGlobal({profileMenuState: false})
 }

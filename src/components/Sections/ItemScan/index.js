@@ -4,7 +4,7 @@ import Modal from '../../Modals/modal';
 import firebase from "../../../firebase";
 import './index.css';
 import Button, { STYLES } from '../../Buttons/button';
-
+import DatePicker from 'react-date-picker';
 const ItemScan = () => {
   
   // eslint-disable-next-line no-unused-vars
@@ -14,6 +14,10 @@ const ItemScan = () => {
   const [ msg, setMsg ] = useGlobal('notificationMsg');
   const [ item, setItem ] = useState('')
   const [ returnItem, setReturnItem ] = useState(false)
+  const [selectedDate, setSelectedDate] = React.useState(new Date());
+  const handleDateChange = date => {
+        setSelectedDate(date);
+    };
   const handleScan = data => {
     if (data) {
       // eslint-disable-next-line
@@ -38,21 +42,49 @@ const ItemScan = () => {
   const handleError = err => {
     console.error(err)
   }
-  const takeObject = (item) => (
+  const takeObject = (item) => {
+    // let docRef = firebase.firestore().collection("items").doc(item);
+    let message = `You have took ${item} successfully !`;
+    const takeAction = async (item)  => {
+      try {
+      const addLogs = await firebase.firestore().collection('activityLogs').add({
+        action: 'UPDATE',
+        msg: 'Took an item',
+        user: `${loggedInUserData[0].firstName} ${loggedInUserData[0].lastName}`,
+        item: item,
+        created_at: new Date()
+    })
+        const takeObject = await firebase.firestore().collection('items').doc(item)
+        .set({returnDate: selectedDate, takenBy: loggedInUserData[0].firstName, status:'OUT', location: 'unknown'},{merge:true})
+        setMsg({show: true, msg:message, variant:'success'})
+        return (takeObject, addLogs);
+    } catch (error) {
+        console.log(error);
+        setMsg({show: true, msg:error, variant:'error'})
+    }
+}
+    return (
     <div className='return-message'>
       <h4>You are about to take {item} from storage ?</h4>
       <p>If you want to continue click Take button.</p>
-      <Button buttonStyle={STYLES[3]} onClick={() => console.log('TODO function for taking')} children='Take'/>
+      <div className='date-picker'>
+        <DatePicker
+          value={selectedDate}
+          
+          onChange={handleDateChange} />
+      </div>
+      <Button buttonStyle={STYLES[3]} onClick={() => takeAction(item)} children='Take'/>
       <Button buttonStyle={STYLES[4]} onClick={() => setDialogState(false)} children='Cancel'/>
     </div>
-  )
+    )
+    }
   const returnObject = (item) => {
     let docRef = firebase.firestore().collection("items").doc(item);
     let message = `You have returned ${item} successfully !`;
     const returnAction = async (item)  => {
       const addLogs = await firebase.firestore().collection('activityLogs').add({
         action: 'UPDATE',
-        msg: 'Retuned an item',
+        msg: 'Returned an item',
         user: `${loggedInUserData[0].firstName} ${loggedInUserData[0].lastName}`,
         item: item,
         created_at: new Date()

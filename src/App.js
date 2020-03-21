@@ -13,7 +13,7 @@ import ManageUsers from './pages/admin/manageUsers';
 import NotificationMsg from './components/Notification/index';
 import TopNav from './components/TopNav/index';
 import ProfileMenu from "./components/ProfileMenu";
-
+import UserItems from './pages/userItems';
 
 const App = () => {
   const [ loggedInUserData ] = useGlobal('loggedInUserData')
@@ -37,6 +37,7 @@ const App = () => {
           <PrivateRoute exact path="/" component={Home} />
           <PrivateRoute exact path='/manage-qr' component={ManageQR} /> 
           <PrivateRoute exact path='/manage-users' component={ManageUsers} /> 
+          <PrivateRoute exact path='/user-items' component={UserItems} /> 
           <PrivateRoute exact path='/scan' component={Scan} /> 
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={SignUp} />
