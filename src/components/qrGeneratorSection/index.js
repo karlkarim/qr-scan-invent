@@ -10,11 +10,11 @@ const QRGeneratorSection = () => {
 
         if (!qrItemName) return alert("Add some value!");
         try {
-            const add = await firebase.firestore().collection("items").add({name: qrItemName})
+            const add = await firebase.firestore().collection("items").doc(qrItemName).set({name: qrItemName})
             setData('');
             return add;
         } catch (error) {
-            
+            console.log(error)
         }
     }
 

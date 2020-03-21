@@ -8,9 +8,9 @@ const QRManager = () => {
     return (
     <div className="card-wrapper">
 
-        <HeroQRManager></HeroQRManager>
-        <QRGeneratorSection></QRGeneratorSection>
-        <QRManagerList></QRManagerList>        
+        <HeroQRManager />
+        <QRGeneratorSection />
+        <QRManagerList />
 
     </div> ); 
 };
