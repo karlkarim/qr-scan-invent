@@ -7,7 +7,10 @@ import './style.css';
 
 const QRManagerList = () => {
 
+    
+
     const [items, setItems] = useState([]) 
+    const [showQR, setShowQR] = useState(false)
 
     const getItems = async() => {
         try {
@@ -48,36 +51,44 @@ const QRManagerList = () => {
 
     }    
 
+   
+
     useEffect(() => {
         getItems();
     }, [])
 
     return(
+        
 
     <section>  
-            <div className="columns">
+            <div className="manag-list-columns">
                 {items.map(item => (
 
                
-                    <div className="card">
-                        <header className="card-header">
-                            <p className="card-header-title">
+                    <div className="manag-list-card">
+                       <div className="manag-list-content" >
+                        <div className="manag-list-card-header">
+                            <p className="manag-list-title">
                             {item.name}
                             </p>
-                        </header>
+                        </div>
                    
-                        <div className="content" >
+                        
+                        <div className="manag-list-card-footer">
+                            <a href="#" class="manag-list-download" onClick={() => doDownload(item.id, item.name)}>Save</a>
+                            <button class="manag-list-delete" onClick={() => deleteItem(item.id)}>Delete</button>
+                            <button class="manag-list-show" onClick={() => setShowQR(!showQR)}>Show QR</button>
+                        </div>
+                        </div>
+                        {showQR && 
+                        <div className="qr-svg" >
                         <QRCodeGenerator 
                             value={item.name}
                             id = {item.id}
                             imageSettings={{excavate: true, height: 24,width: 24}} renderAs='svg' includeMargin={true} level='H'
-                        />                            
-                        </div>
-                        
-                        <footer className="card-footer">
-                            <a href="#" class="card-footer-item" onClick={() => doDownload(item.id, item.name)}>Save</a>
-                            <button class="card-footer-item" onClick={() => deleteItem(item.id)}>Delete</button>
-                        </footer>
+                        />                     
+                        </div>}       
+                    <div className='underLine'></div>
                     </div>
                 ))}      
             </div>    
