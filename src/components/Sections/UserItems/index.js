@@ -52,7 +52,7 @@ const UserItemsList = () => {
 			<ContentBox title='To be returned' children={
 				myItems.map(item => (
 				<div className='item-list'>
-					{item.name}{daysDiff(item.returnDate.seconds)}
+					{item.name}
 					<ProgressBar label={moment.unix(item.returnDate.seconds).fromNow()} progress={calcProgress(item.returnDate.seconds,item.takenDate.seconds)}/>
 				</div>
 				))
