@@ -22,7 +22,7 @@ const ItemScan = () => {
     if (data) {
       // eslint-disable-next-line
       let item = data.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g,'_');
-      let docRef = firebase.firestore().collection("items").doc(item);
+      let docRef = firebase.firestore().collection('items').doc(item);
 
       docRef.get().then(function(doc) {
         if (doc.exists && doc.data().status === 'OUT') {
@@ -44,6 +44,7 @@ const ItemScan = () => {
   }
   const takeObject = (item) => {
     // let docRef = firebase.firestore().collection("items").doc(item);
+    
     let message = `You have took ${item} successfully !`;
     const takeAction = async (item)  => {
       try {
@@ -79,7 +80,7 @@ const ItemScan = () => {
     )
     }
   const returnObject = (item) => {
-    let docRef = firebase.firestore().collection("items").doc(item);
+    let docRef = firebase.firestore().collection('items').doc(item);
     let message = `You have returned ${item} successfully !`;
     const returnAction = async (item)  => {
       const addLogs = await firebase.firestore().collection('activityLogs').add({

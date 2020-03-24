@@ -1,0 +1,19 @@
+.item-list {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1em;
+  border-bottom: solid 1px #ECEBEE;
+  margin: 10px 0 10px 0;
+  padding: 10px 0 10px 0;
+}
+.item-list:last-child {
+  border-bottom: none;
+}
+.item-list date {
+  color: #717170;
+  font-weight: 100;
+  font-size: .9em;
+  margin-left: 3px;
+
+}

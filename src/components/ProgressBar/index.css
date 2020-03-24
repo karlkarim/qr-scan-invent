@@ -1,0 +1,30 @@
+.progress-bar {
+	border-radius: 60px;
+	overflow: hidden;
+  width: 100px;
+  margin-left: auto;
+
+}
+.progress-bar	span {
+		display: block;
+	}
+
+.bar {
+  background: #E0E2EA;
+}
+
+.progress {
+  background: #6080F2;
+  color: #fff;
+  padding: 3px;
+  width: 0;
+}
+
+.days-left {
+  padding: 0 10px 0 15px;
+  font-size: .6em;
+  color: #6080F2;
+}
+.ending {
+  background: #F26674;
+}

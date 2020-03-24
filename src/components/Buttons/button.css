@@ -1,6 +1,6 @@
 :root {
-    --primary: #004f5f;
-    --secondary: #766aaf;
+    --primary: #5F80F4;
+    --secondary: #4D4CAB;
     --warning: #38c7a6;
     --info: #36e9fe;
     --danger: #D2214D;
@@ -16,7 +16,7 @@
     vertical-align: middle;
     margin-right: 0.7em;
     color: #fff;
-    opacity: 0.6;
+    opacity: 0.9;
     transition: 0.3s;
 }
 .btn:hover {
