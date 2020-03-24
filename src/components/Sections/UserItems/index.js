@@ -57,17 +57,6 @@ const UserItemsList = () => {
 				</div>
 				))
 			} />
-		<div className='card-wrapper'>
-			{ myItems.map(item => (
-			<div key={item.id} className='item-container-root'>
-				<div className='item-container-conent'>
-				<p>{item.name}</p>
-				<p>{moment(item.dateReturn).format('LL')}</p>
-				</div>
-			</div>
-			))
-			}
-		</div>
 		</section>
 		);
 	}
