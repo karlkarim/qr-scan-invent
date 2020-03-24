@@ -10,7 +10,6 @@ const QRManagerList = () => {
     
 
     const [items, setItems] = useState([]) 
-    const [showQR, setShowQR] = useState(false)
 
     const getItems = async() => {
         try {
@@ -48,8 +47,17 @@ const QRManagerList = () => {
         } catch (error) {
             console.log(error);
         }
-
     }    
+
+    const qrVisible = (id) => {
+        const qr = document.querySelector(`#${id}`)
+        if(qr.style.display === '') {
+            qr.setAttribute('style', 'display:none')
+        } else {
+            qr.setAttribute('style', '')
+        }
+
+    }
 
    
 
@@ -77,17 +85,17 @@ const QRManagerList = () => {
                         <div className="manag-list-card-footer">
                             <a href="#" class="manag-list-download" onClick={() => doDownload(item.id, item.name)}>Save</a>
                             <button class="manag-list-delete" onClick={() => deleteItem(item.id)}>Delete</button>
-                            <button class="manag-list-show" onClick={() => setShowQR(!showQR)}>Show QR</button>
+                            <button class="manag-list-show" onClick={() => qrVisible(item.id)}>Show QR</button>
                         </div>
                         </div>
-                        {showQR && 
-                        <div className="qr-svg" >
+                        
+                        <div className="qr-svg" id={item.id} style={{display:'none'}}>
                         <QRCodeGenerator 
                             value={item.name}
                             id = {item.id}
                             imageSettings={{excavate: true, height: 24,width: 24}} renderAs='svg' includeMargin={true} level='H'
                         />                     
-                        </div>}       
+                        </div>      
                     <div className='underLine'></div>
                     </div>
                 ))}      

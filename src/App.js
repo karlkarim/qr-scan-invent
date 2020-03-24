@@ -8,6 +8,7 @@ import QRScan from "./pages/QRScan";
 import { AuthProvider } from "./components/auth/Auth";
 import PrivateRoute from "./PrivateRoute";
 import QRManager from "./pages/QRManager";
+import ItemsList from "./pages/ItemsList";
 import BottomNav from './components/bottomNav/BottomNav';
 import TopNav from './components/topNav/TopNav';
 import ProfileMenu from './components/profileMenu';
@@ -38,6 +39,7 @@ const App = () => {
         <PrivateRoute exact path="/qrscan" component={QRScan} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={SignUp} />
+        <Route exact path="/itemslist" component={ItemsList}/>
         <PrivateRoute exact path="/QRManager" component={QRManager} />
     
       </Router>
