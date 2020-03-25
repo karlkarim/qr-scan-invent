@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import PaperCard from '../Cards/PaperCard';
+import PaperCard, { variant } from '../Cards/PaperCard';
 import firebase from '../../firebase';
 import { useHistory } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
@@ -47,14 +47,14 @@ const SummarySection = () => {
             {items.length ?
             <div className='flex-row'>
             <PaperCard
-                color={'purple-light'}
+                color={variant[0]}
                 onClick={() => history.push('/manage-qr')}
                 title={'Items'}
                 subTitle={items ? items.length : '0'}
                 icon={'far fa-list-alt'}
             />
             <PaperCard
-                color={'blue-light'}
+                color={variant[4]}
                 onClick={() => history.push('/manage-users')}
                 title={'Users'}
                 subTitle={users ? users.length : '0'}

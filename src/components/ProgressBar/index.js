@@ -10,7 +10,7 @@ const ProgressBar = ({ label, progress }) => {
       return false;
     }
   }
-  isEnding()
+
   return ( 
     <>
     <div className="progress-bar">

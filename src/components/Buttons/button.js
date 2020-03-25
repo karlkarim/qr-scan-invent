@@ -1,17 +1,18 @@
 import React from 'react';
 import './button.css';
 export const STYLES = [
-    "is-primary",
-    "btn-warning-solid",
     "btn-primary-solid",
     "btn-secondary-solid",
+    "btn-info-solid",
+    "btn-success-solid",
+    "btn-warning-solid",
     "btn-danger-solid",
-    "btn is-danger",
-    "is-primary is-outlined",
-    "is-info is-outlined",
-    "is-success is-outlined",
-    "is-danger is-outlined",
-    "btn-karl-custom"
+    "btn-primary-outline",
+    "btn-secondary-outline",
+    "btn-info-outline",
+    "btn-success-outline",
+    "btn-warning-outline",
+    "btn-danger-outline",
 ]
 export const SIZE = [
     "is-small",

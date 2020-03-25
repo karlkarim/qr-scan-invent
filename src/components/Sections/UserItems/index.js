@@ -49,11 +49,16 @@ const UserItemsList = () => {
 	console.log(myItems[0])
 	return ( 
 		<section>
-			<ContentBox title='To be returned' children={
+			<ContentBox
+				title='To be returned'
+				icon={<i class="fas fa-history"></i>}
+				children={
 				myItems.map(item => (
 				<div className='item-list'>
 					{item.name}
-					<ProgressBar label={moment.unix(item.returnDate.seconds).fromNow()} progress={calcProgress(item.returnDate.seconds,item.takenDate.seconds)}/>
+					<ProgressBar
+						label={moment.unix(item.returnDate.seconds).fromNow()}
+						progress={calcProgress(item.returnDate.seconds,item.takenDate.seconds)}/>
 				</div>
 				))
 			} />

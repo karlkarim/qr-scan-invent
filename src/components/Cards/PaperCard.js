@@ -1,11 +1,13 @@
 import React from 'react';
 import './paperCard.css';
 
-const variant = [
-    'primary-light',
-    'purple-light',
-    'blue-light',
-    'green-light'
+export const variant = [
+    'paper-primary-light',
+    'paper-secondary-light',
+    'paper-info-light',
+    'paper-success-light',
+    'paper-warning-light',
+    'paper-danger-light',
 ]
 const PaperCard = (props) => {
     const { title, subTitle, icon, color, onClick } = props;

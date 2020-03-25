@@ -1,13 +1,22 @@
-:root {
+/* :root {
     --primary: #5F80F4;
     --secondary: #4D4CAB;
-    --warning: #38c7a6;
+    --success:#1C976B;
     --info: #36e9fe;
+    --warning: #EFAA57;
     --danger: #D2214D;
+} */
+:root {
+    --primary: #018FFF;
+    --secondary: #4D4CAB;
+    --info: #3BDFFB;
+    --success:#46F3C5;
+    --warning: #FCC140;
+    --danger: #F26674;
 }
 
 .btn {
-    border-radius: 6px;
+    border-radius: 20px;
     outline: none;
     padding: .5rem .85rem;
     margin-top: .5rem;
@@ -16,17 +25,24 @@
     vertical-align: middle;
     margin-right: 0.7em;
     color: #fff;
-    opacity: 0.9;
+    opacity: 1;
     transition: 0.3s;
+    border-width: 0;
 }
 .btn:hover {
-    opacity: 1
+    opacity: 0.7
 }
 .btn-primary-solid {
     background-color: var(--primary);
 }
 .btn-secondary-solid {
     background-color: var(--secondary);
+}
+.btn-info-solid {
+    background-color: var(--info);
+}
+.btn-success-solid {
+    background-color: var(--success);
 }
 .btn-warning-solid {
     background-color: var(--warning);
@@ -50,15 +66,7 @@
     border: 1px solid var(--danger);
     color: var(--danger);
 }
-.btn-karl-custom {
-    border-radius: 5em;
-    background: linear-gradient(to right, #1d3ee0, #7082db);
-    border: 0;
-    margin:auto 38%;
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 13px;
-    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
-}
+
 .btn-medium {
     width: 100px;
 }

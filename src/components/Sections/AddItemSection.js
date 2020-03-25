@@ -18,7 +18,7 @@ const AddItemSection = () => {
         if(!value) return
         let message = `Added new item ${value}`
         try {
-            const addQR = await firebase.firestore().collection('items').doc(value).set({name: value, satus: 'IN'})
+            const addQR = await firebase.firestore().collection('items').doc(value).set({name: value, satus: 'IN', location:'storage'})
             setQrValue('')
             const addLogs = await firebase.firestore().collection('activityLogs').add({
                 action: 'INSERT',
@@ -53,7 +53,7 @@ const AddItemSection = () => {
                     value={qrValue}
                 />
                 <Button
-                    buttonStyle={STYLES[3]}
+                    buttonStyle={STYLES[0]}
                     buttonSize={'is-normal'}
                     type="submit"
                     onClick={() => addQR(qrValue)}>

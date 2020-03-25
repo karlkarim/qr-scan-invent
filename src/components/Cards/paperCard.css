@@ -1,3 +1,11 @@
+:root {
+  --primary: #018FFF;
+  --secondary: #4D4CAB;
+  --info: #3BDFFB;
+  --success:#46F3C5;
+  --warning: #FCC140;
+  --danger: #F26674;
+}
 .paper-root {
     margin: 0.4em;
     border-radius: 4px;
@@ -17,19 +25,27 @@
 .paper-container p {
     font-size: 1.25rem;
 }
-.primary-light {
-    background-color: #EBFFFC;
-    color: #2F9580;
+.paper-primary-light {
+    background-color: rgba(1, 143, 255, 0.15);
+    color: var(--primary);
   }
-  .purple-light {
-    background-color: #EEF3FC;
-    color: #2460C4;
-  }
-  .blue-light {
-    background-color: #EEF6FC;
-    color: #2772AA;
-  }
-  .green-light {
-    background-color: #EFFAF3;
-    color: #287A44;
-  }
+.paper-secondary-light {
+  background-color: rgba(77, 76, 171, 0.15);
+  color: var(--secondary);
+}
+.paper-info-light {
+  background-color: rgba(59, 223, 251, 0.15);
+  color: var(--info);
+}
+.paper-success-light {
+  background-color: rgba(70, 243, 197, 0.15);
+  color: var(--success);
+}
+.paper-warning-light {
+  background-color: rgba(252, 193, 64, 0.15);
+  color: var(--warning);
+}
+.paper-danger-light {
+  background-color: rgba(242, 102, 116, 0.15);
+  color: var(--danger);
+}
