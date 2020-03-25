@@ -5,6 +5,8 @@ import firebase from "../../../firebase";
 import './index.css';
 import Button, { STYLES } from '../../Buttons/button';
 import DatePicker from 'react-date-picker';
+import ContentBox from '../../ContentBox/index';
+
 const ItemScan = () => {
   
   // eslint-disable-next-line no-unused-vars
@@ -124,14 +126,11 @@ const ItemScan = () => {
   }
     return ( 
         <section>
-      <div className='card-wrapper'>
-        
-          <div className='scan-header'>
-            <h4>Scan items &nbsp;<i className='fas fa-qrcode'></i></h4>
-          </div>
-          </div>
-          <div className='card-wrapper'>
-            <div className='qr-container'>
+          <ContentBox
+            title='Scan items'
+            icon={<i className='fas fa-qrcode'></i>}
+            children={
+              <div className='qr-container'>
             <QrReader
                   delay={500}
                   onError={handleError}
@@ -139,7 +138,8 @@ const ItemScan = () => {
                   style={{ width: '100%' }}
                 />
                 </div>
-          </div>
+            }
+          />
     <Modal
       header={returnItem ? 'Return item' : 'Take Item'}
       body={returnItem ? returnObject(item) : takeObject(item)}

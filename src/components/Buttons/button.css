@@ -28,10 +28,12 @@
     opacity: 1;
     transition: 0.3s;
     border-width: 0;
+    border-style:none;
 }
 .btn:hover {
     opacity: 0.7
 }
+
 .btn-primary-solid {
     background-color: var(--primary);
 }
@@ -53,18 +55,22 @@
 .btn-primary-outline {
     border: 1px solid var(--primary);
     color: var(--primary);
+    background-color: #fff;
 }
 .btn-secondary-outline {
     border: 1px solid var(--secondary);
     color: var(--secondary);
+    background-color: #fff;
 }
 .btn-warning-outline {
     border: 1px solid var(--warning);
     color: var(--warning);
+    background-color: #fff;
 }
 .btn-danger-outline {
     border: 1px solid var(--danger);
     color: var(--danger);
+    background-color: #fff;
 }
 
 .btn-medium {

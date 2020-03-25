@@ -124,14 +124,22 @@ const ListAndEditItems = () => {
 					<Button
 						buttonStyle={STYLES[0]}
 						buttonSize={'is-normal'}
+						onClick={() => handleModal('edit', item.id, item.name)}
 						>Edit</Button>
 					<Button
 						buttonStyle={STYLES[4]}
 						buttonSize={'is-normal'}
+						onClick={() => doDownload(item.id, item.name)}
 						>Download</Button>
+					<Button
+						buttonStyle={STYLES[3]}
+						buttonSize={'is-normal'}
+						onClick={() => handleModal('qr-code', item.id, item.name)}
+						>View QR</Button>
 					<Button
 						buttonStyle={STYLES[11]}
 						buttonSize={'is-normal'}
+						onClick={() => deleteItem(item.id)}
 						>Delete</Button>
 						</div>
 				</div>)) :
@@ -145,35 +153,6 @@ const ListAndEditItems = () => {
 				</div>
 			}
 		/>
-		<div className='card-wrapper'>
-		{items.length ?
-			<div>
-			{items.map( item => (
-				<div className='item-row' key={item.id}>
-				<p className='item-title'>{item.name} <span onClick={() => handleModal('qr-code', item.id, item.name)}>View code</span></p>
-				<p className='item-desc'>
-				<i className={`${item.status === 'OUT' ? 'fas fa-sign-out-alt' : 'far fa-check-square'}`} style={item.status === 'OUT' ? {color: '#f44336'} : {color:'#4CAF50'}}></i>
-				{item.status === 'OUT' ? `Item taken by ${item.takenBy}`: 'Item available'}
-				</p>
-				<div className='item-actions'>
-				<Button buttonStyle={STYLES[2]} buttonSize={'is-normal'} onClick={() => handleModal('edit', item.id, item.name)}>Edit&nbsp;<i className="far fa-edit"></i></Button>
-				<Button buttonStyle={STYLES[4]} buttonSize={'is-normal'} onClick={() => deleteItem(item.id)}>Delete&nbsp;<i className="far fa-trash-alt"></i></Button>
-				<Button className='download' buttonStyle={STYLES[3]} buttonSize={'is-normal'} onClick={() => doDownload(item.id, item.name)}>Download&nbsp;<i className="fas fa-download"></i></Button>
-				</div>
-				<QRCode style={{display:'none'}} id={item.id} imageSettings={{excavate: true, height: 24,width: 24,src:'http://tmd.ee/wp-content/uploads/2018/03/favicon.ico'}} renderAs='svg' includeMargin={true} level='H' value={item.name} />
-				
-				</div>
-				))}</div> :
-				<div style={{textAlign: 'center'}}>
-				<Loader
-				type="Puff"
-				color="#00BFFF"
-				height={100}
-				width={100}
-				/>
-				</div>
-			}
-			</div>
 			<Modal
 			modalState={dialogState}
 			header={modalType === 'edit' ? item.name : item.name}

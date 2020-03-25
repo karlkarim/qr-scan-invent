@@ -32,7 +32,10 @@ const Button = ({
     const checkPill = isPill ? 'isPill' : ''
     SIZE.includes()
     return (
-        <button className={`btn ${checkSize} ${checkStyle} ${checkPill}`} type={type} onClick={onClick}>
+        <button
+            className={`btn ${checkSize} ${checkStyle} ${checkPill}`}
+            type={type}
+            onClick={onClick}>
             {children}
         </button>
     )
