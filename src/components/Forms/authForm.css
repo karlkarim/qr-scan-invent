@@ -77,3 +77,9 @@ flex-direction: column;
   text-align: center;
   color: #fff;
 }
+.auth-form-footer {
+  position: fixed;
+  bottom: 10px;
+  color: #737880;
+  font-size: .7em;
+}

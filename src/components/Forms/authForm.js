@@ -45,7 +45,6 @@ const AuthForm = ({
 			inputName='email'
 			inputPlaceholder='Email'
 		/>
-		
 		{/* <p className="help is-danger">{emailErrorMsg}</p> */}
 		{formType === 'signup' ? 
 		<>
@@ -65,7 +64,6 @@ const AuthForm = ({
 			inputName='lName'
 			inputPlaceholder='Last name'
 		/>
-		
 		</>
 		: ''
 	}
@@ -74,21 +72,21 @@ const AuthForm = ({
 			inputName='password'
 			inputPlaceholder='Password'
 		/>
-	<div className='auth-form-actions'>
-	<Button buttonStyle={STYLES[0]} children={
-		<>{checkFormType.btnCTA}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<i class="far fa-arrow-alt-circle-right"></i></>
-		}/>
-	<Link to={checkFormType.navLink}>
-		Forgot Password ?
-	</Link>
-	</div>
+		<div className='auth-form-actions'>
+			<Button buttonStyle={STYLES[0]} children={
+				<>{checkFormType.btnCTA}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<i class="far fa-arrow-alt-circle-right"></i></>
+				}/>
+			<Link to={checkFormType.navLink}>
+				Forgot Password ?
+			</Link>
+		</div>
 	</div>
 	</form>
+	<div className='auth-form-footer'>
+		&copy; Operating since 2020
 	</div>
-	
-	
-	
+	</div>
 	</div>
 	)
 }
