@@ -1,35 +1,79 @@
-/* body {
-    background-color: #ebfeff ;
-    font-family: 'Ubuntu', sans-serif;
-  
-  }
-.container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px 15px;
-    background-color: #FFFFFF;
-    width: 50%;
-    min-width: 300px;
-    margin: 20% auto;
-    border-radius: 1.5em;
-    box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+.auth-form-root {
+display: flex;
+flex-direction: column;
 }
-.authContainer{
-  width: 100%;
+.auth-form-top {
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  height: 40%;
+  background: rgb(1,143,255);
+  background: radial-gradient(circle, rgba(1,143,255,1) 0%, rgba(77,76,171,1) 100%);
+  top: 0;
+  right: 0;
+  left: 0;
+  border-radius: 0 0 0 90px;
+}
+.bottom-bg {
+  position: absolute;
+  background: rgb(1,143,255);
+  background: radial-gradient(circle, rgba(1,143,255,1) 0%, rgba(77,76,171,1) 100%);
+  height: 60%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.auth-form-bottom {
+  padding: 0 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  }
-.authForm {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: inherit;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 60%;
+  border-radius: 0 90px 0 0;
+  background-color: #272D3A;
+}
+.top-bg {
+  position: absolute;
+  background: #272D3A;
+  height: 40%;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.auth-form-bottom form {
+  width: 90%;
 }
 
-.formActionBtns {
+.subtitle {
+  margin: 60px 0 15px 0;
+  color: #fff;
+  font-size: 1.2em;
+}
+.auth-inputs {
   display: flex;
-  flex-direction: row;
-  width: 100%;
-} */
+  flex-direction: column;
+}
+.auth-form-actions {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: baseline;
+}
+
+.auth-form-actions a {
+  text-decoration: none;
+  color: #737880
+}
+.auth-form-actions button {
+  padding: .6rem 1.2rem;
+}
+.auth-form-title {
+  margin-top: 40px;
+  font-size: 1.2em;
+  text-align: center;
+  color: #fff;
+}
