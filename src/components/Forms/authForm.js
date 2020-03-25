@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Button, { STYLES } from '../Buttons/button';
 import logo from '../../assets/warehouses.svg';
+import user from '../../assets/user.svg';
 import TextField from '../TextField/index';
 import './authForm.css';
 
@@ -75,7 +76,7 @@ const AuthForm = ({
 		<div className='auth-form-actions'>
 			<Button buttonStyle={STYLES[0]} children={
 				<>{checkFormType.btnCTA}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<i class="far fa-arrow-alt-circle-right"></i></>
+				<i className="far fa-arrow-alt-circle-right"></i></>
 				}/>
 			<Link to={checkFormType.navLink}>
 				Forgot Password ?

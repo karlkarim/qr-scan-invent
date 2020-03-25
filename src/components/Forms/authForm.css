@@ -58,6 +58,7 @@ flex-direction: column;
   display: flex;
   flex-direction: column;
 }
+
 .auth-form-actions {
   display: flex;
   justify-content: space-evenly;
