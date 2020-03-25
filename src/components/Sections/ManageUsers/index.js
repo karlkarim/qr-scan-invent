@@ -4,6 +4,7 @@ import Modal from '../../Modals/modal';
 import Button, { STYLES } from '../../Buttons/button';
 import moment from 'moment';
 import AddUserForm from '../../Forms/addUser';
+import Tag, { variant } from '../../Tags/index';
 import defAvatar from '../../../assets/default-avatar.png';
 import './index.css'
 import ContentBox from '../../ContentBox/index';
@@ -78,7 +79,10 @@ const ManageUsers = () => {
 							</div>
 						</div>
 						<div className='item-actions'>
-							{user.role}
+							<Tag
+							tagVariant={user.role === 'admin'? variant[0]: variant[2]}
+							label={user.role ? user.role : 'N/A'}
+							/>
 						</div>
 					</div>
 					))

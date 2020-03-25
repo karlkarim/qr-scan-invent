@@ -4,7 +4,8 @@
     top: 0;
     z-index: 1300;
     background: #fff;
-    padding: 0 10px 0 10px;
+    padding: 0 10px 0 20px;
+    border-radius: 0 0 0 5px;
     width: 10em;
     box-shadow: 0px 11px 15px -7px rgba(0,0,0,0.2),
                 0px 24px 38px 3px rgba(0,0,0,0.14),
@@ -17,7 +18,7 @@
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid #00000033;
-    color: #2772AA;
+    color: #018FFF;
     margin-top: 1em;
     padding-bottom: .5em;
 }
@@ -37,4 +38,7 @@
     bottom: -9999999px;
     top: 0;
     right: 0;
+}
+.log-out {
+    color: #AFB5B8;
 }

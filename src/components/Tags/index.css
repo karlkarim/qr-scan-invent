@@ -1,0 +1,35 @@
+:root {
+  --primary: #018FFF;
+  --secondary: #4D4CAB;
+  --info: #3BDFFB;
+  --success:#46F3C5;
+  --warning: #FCC140;
+  --danger: #F26674;
+}
+
+.lbl {
+  padding: 4px 8px;
+  font-size: .8em;
+  margin: 4px;
+  border-radius: 20px;
+  color: #fff;
+  text-transform: uppercase;
+}
+.lbl-primary-solid {
+  background-color: var(--primary);
+}
+.lbl-secondary-solid {
+  background-color: var(--secondary);
+}
+.lbl-info-solid {
+  background-color: var(--info);
+}
+.lbl-success-solid {
+  background-color: var(--success);
+}
+.lbl-warning-solid {
+  background-color: var(--warning);
+}
+.lbl-danger-solid {
+  background-color: var(--danger);
+}
