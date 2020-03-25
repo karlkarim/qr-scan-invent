@@ -124,8 +124,8 @@ const AddUserForm = ({userData}) => {
             <div className='field'>
                 <div className=''>
                 <Button
-                buttonStyle={STYLES[3]}
-                children={<i className="far fa-save"></i>}
+                buttonStyle={STYLES[0]}
+                children={<>Save&nbsp;<i className="far fa-save"></i></>}
                 />
                 </div>
             </div>
@@ -170,8 +170,8 @@ const AddUserForm = ({userData}) => {
             <div className='field'>
             <div className=''>
             <Button
-            buttonStyle={STYLES[3]}
-            children={<i className="far fa-save"></i>}
+            buttonStyle={STYLES[0]}
+            children={<>Save&nbsp;<i className="far fa-save"></i></>}
             />
             </div>
             </div>

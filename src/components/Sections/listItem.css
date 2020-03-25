@@ -11,6 +11,9 @@
   .item-list:last-child {
     border-bottom: none;
   }
+  .item-row:last-child {
+      border-bottom: none;
+  }
   .item-header {
       display: flex;
       flex-direction: column;

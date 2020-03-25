@@ -17,5 +17,6 @@
   color: #018FFF;
 }
 .content-box-content {
-
+  max-height: 400px;
+  overflow: scroll;
 }

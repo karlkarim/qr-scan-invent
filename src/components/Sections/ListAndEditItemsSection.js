@@ -167,8 +167,8 @@ const ListAndEditItems = () => {
 			actions={
 				modalType === 'edit' ?
 				<>
-				<Button buttonStyle={STYLES[2]} onClick={() => updateItem(item.id, item.name)}>Update</Button>
-				<Button buttonStyle={STYLES[3]} onClick={() => setDialogState(!dialogState)}>Cancel</Button>
+				<Button buttonStyle={STYLES[0]} onClick={() => updateItem(item.id, item.name)}>Update</Button>
+				<Button buttonStyle={STYLES[6]} onClick={() => setDialogState(!dialogState)}>Cancel</Button>
 				</> :
 				''
 			}/>
