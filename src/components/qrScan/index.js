@@ -3,6 +3,7 @@ import QrReader from 'react-qr-reader';
 import DialogBox from '../dialogBox'
 import './style.css'
 import firebase from '../../firebase'
+import DatePicker from "react-date-picker";
 
 
 const QRScanForm = () => {
@@ -10,6 +11,12 @@ const QRScanForm = () => {
     const [ dialogState, setDialogState ] = useGlobal('dialogState');
     const [ returning, setReturning ] = useState(false)
     const [ loggedInUserData ] = useGlobal('loggedInUserData');
+    const [selectedDate, setSelectedDate] = useState(new Date())
+
+    const handleDateChange = date => {
+      setSelectedDate(date)
+    }
+
     const handleScan = data => {
         if (data) {
           let item = data.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g,'_');
@@ -49,19 +56,42 @@ const QRScanForm = () => {
         <div className=''>
           <h4>Returning <b>{item}</b> back to storage ?</h4>
           <button onClick={() => returnAction(item)}> Return</button>
-          <button> Cancel</button>
+          <button onClick={() => setDialogState(false)}> Cancel</button>
         </div>
       )
     }
 
-    const takeObject = (item) => {
+    const takeObject = async (item) => {
       // firebase asju
+      try {
+        
+        const takeAction = await firebase.firestore().collection('items').doc(item)
+            .set({
+              takenDate: new Date(),
+              takenBy: loggedInUserData[0].firstName,
+              returnDate: selectedDate,
+              status:'OUT',
+              location: 'unknown'},
+              {merge: true})
+              
+              setDialogState(false)
+              return takeAction;
+      } catch (error) {
+        console.log(error)
+      }
+      
 
       return (
         <div className=''>
-          <h4>Take <b>{item}</b> from storage ?</h4>
-          <button> Take</button>
-          <button> Cancel</button>
+          <h4>Take <b>{item}</b> from storage?</h4>
+          <div className="datepicker-dialog">
+            <DatePicker
+              value={selectedDate}
+              onChange={handleDateChange}
+            />
+          </div>
+          <button onClick={() => takeObject(item)}>Take</button>
+          <button onClick={() => setDialogState(false)}>Cancel</button>
         </div>
       )
     }
