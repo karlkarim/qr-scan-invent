@@ -5,6 +5,10 @@ import { AuthContext } from "../Auth.js";
 import AuthForm from '../components/Forms/authForm';
 
 const Login = ({ history }) => {
+  const transitions = () => {
+    document.querySelector('.auth-form-top').classList.add('testing-top')
+    document.querySelector('.auth-form-bottom').classList.add('testing-bottom')
+  }
   const handleLogin = useCallback(
     async event => {
       event.preventDefault();
@@ -20,7 +24,10 @@ const Login = ({ history }) => {
         await app
           .auth()
           .signInWithEmailAndPassword(email.value, password.value);
-        history.push("/");
+          transitions()
+          setTimeout(() => {
+            history.push("/");
+          },1000);
       } catch (error) {
         alert(error);
       }
@@ -31,7 +38,9 @@ const Login = ({ history }) => {
   const { currentUser } = useContext(AuthContext);
   
   if (currentUser) {
-    return <Redirect to="/" />;
+    setTimeout(() => {
+      return <Redirect to="/" />;
+    },1000)
   }
   return (
       <AuthForm formType="login" onSubmit={handleLogin} />

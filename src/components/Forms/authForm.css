@@ -14,6 +14,8 @@ flex-direction: column;
   right: 0;
   left: 0;
   border-radius: 0 0 0 90px;
+  transition: height 1s;
+  z-index: 1300;
 }
 .bottom-bg {
   position: absolute;
@@ -23,6 +25,7 @@ flex-direction: column;
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: 1300;
 }
 .auth-form-bottom {
   padding: 0 20px;
@@ -36,6 +39,8 @@ flex-direction: column;
   height: 60%;
   border-radius: 0 90px 0 0;
   background-color: #272D3A;
+  transition: height 1s;
+  z-index: 1300;
 }
 .top-bg {
   position: absolute;
@@ -84,4 +89,12 @@ flex-direction: column;
   bottom: 10px;
   color: #737880;
   font-size: .7em;
+}
+.testing-top {
+  height: 100%;
+  /* border-radius: 0 0 0 90px; */
+}
+.testing-bottom {
+  height: 0;
+  /* border-radius: 0 90px 0 0; */
 }
