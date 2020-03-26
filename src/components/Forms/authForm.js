@@ -4,6 +4,7 @@ import Button, { STYLES } from '../Buttons/button';
 import logo from '../../assets/warehouses.svg';
 import user from '../../assets/user.svg';
 import TextField from '../TextField/index';
+import TextFieldWithIcon from '../TextField/textFieldWithIcon';
 import './authForm.css';
 
 export const LOGIN = [{
@@ -39,9 +40,10 @@ const AuthForm = ({
 			</div>
 			<div className='auth-form-bottom'>
 			<p className="subtitle">{checkFormType.subtitle}</p>
-		<form onSubmit={onSubmit}>
+		<form onSubmit={onSubmit} autoComplete='off'>
 			<div className='auth-inputs'>
-		<TextField
+		<TextFieldWithIcon
+			icon='far fa-user'
 			inputType='email'
 			inputName='email'
 			inputPlaceholder='Email'
@@ -68,14 +70,15 @@ const AuthForm = ({
 		</>
 		: ''
 	}
-	<TextField
+	<TextFieldWithIcon
+			icon='fas fa-lock'
 			inputType='password'
 			inputName='password'
 			inputPlaceholder='Password'
 		/>
 		<div className='auth-form-actions'>
 			<Button buttonStyle={STYLES[0]} children={
-				<>{checkFormType.btnCTA}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<>{checkFormType.btnCTA}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<i className="far fa-arrow-alt-circle-right"></i></>
 				}/>
 			<Link to={checkFormType.navLink}>

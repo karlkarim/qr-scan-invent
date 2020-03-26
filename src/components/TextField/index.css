@@ -1,3 +1,28 @@
+.input-container {
+    display: flex;
+}
+.textField-icon {
+    padding: 12px 0px;
+    background: dodgerblue;
+    border-radius: 20px 0 0 20px;
+    border-right: solid 1px #99a1ad;
+    background: #A1A9B6;
+    color: #737880;
+    min-width: 50px;
+    text-align: center;
+  }
+.textField-withIcon-root {
+    border: 0;
+    outline: none;
+    background: #f0f2f5;
+    border-radius: 0 20px 20px 0;
+    height: 40px;
+    padding: 0 25px;
+    min-width: 150px;
+    opacity: 0.6;
+    transition: 0.3s;
+    margin-bottom: 10px;
+}
 .textField-root {
     border: 0;
     outline: none;
