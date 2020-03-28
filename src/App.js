@@ -12,6 +12,7 @@ import ItemsList from "./pages/ItemsList";
 import BottomNav from './components/bottomNav/BottomNav';
 import TopNav from './components/topNav/TopNav';
 import ProfileMenu from './components/profileMenu';
+import MyItems from './pages/MyItems'
 
 
 const App = () => {
@@ -40,6 +41,7 @@ const App = () => {
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/itemslist" component={ItemsList}/>
+        <Route exact path="/myitems" component={MyItems}/>
         <PrivateRoute exact path="/QRManager" component={QRManager} />
     
       </Router>
