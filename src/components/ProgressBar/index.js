@@ -2,23 +2,27 @@ import React from 'react';
 import './index.css';
 
 const ProgressBar = ({ label, progress }) => {
+  
   const isEnding = () => {
-    console.log(typeof(progress))
-    if(progress >= 70) {
+    if(progress <= 2) {
       return true;
     } else {
       return false;
     }
   }
-
+  const calcProgress = () => {
+    if(progress <= 10) {
+      return 100-(progress*10)  
+    }
+  }
   return ( 
     <>
     <div className="progress-bar">
       <span className="bar">
-        <span className={`progress ${isEnding() ? 'ending': ''}`} style={{width:`${progress}%`}}></span>
+        <span className={`progress ${isEnding() ? 'ending': ''}`} style={{width:`${calcProgress()}%`}}></span>
       </span>
     </div>
-        <div className="days-left">{label}</div>
+        <div className={`days-left ${isEnding() ? 'text-ending': ''}`}>{label}</div>
         </>
    );
 }

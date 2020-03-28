@@ -19,7 +19,7 @@ const AddItemSection = () => {
 		if(!value) return
 		let message = `Added new item ${value}`
 		try {
-			const addQR = await firebase.firestore().collection('items').doc(value).set({name: value, satus: 'IN', location:'storage'})
+			const addQR = await firebase.firestore().collection('items').doc(value).set({name: value, status: 'IN', location:'storage'})
 			setQrValue('')
 			const addLogs = await firebase.firestore().collection('activityLogs').add({
 				action: 'INSERT',

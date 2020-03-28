@@ -14,7 +14,9 @@ const Login = ({ history }) => {
       event.preventDefault();
       const { email, password } = event.target.elements;
       try {
-        const dbQuery = await app.firestore().collection('users').where('email', '==', email.value).get()
+        const dbQuery = await app.firestore().collection('users')
+        .where('email', '==', email.value)
+        .get()
         const userData = dbQuery.docs.map(user => ({
           id: user.id,
           ...user.data()
@@ -37,11 +39,11 @@ const Login = ({ history }) => {
 
   const { currentUser } = useContext(AuthContext);
   
-  if (currentUser) {
-    setTimeout(() => {
+  setTimeout(() => {
+    if (currentUser) {
       return <Redirect to="/" />;
-    },1000)
-  }
+    }
+    },100)
   return (
       <AuthForm formType="login" onSubmit={handleLogin} />
   );

@@ -12,7 +12,10 @@ const UserItemsList = () => {
 	const getItems = async () => {
 		if(loggedInUserData.length === 0) return;
 		try {
-				const itemsQuery = await firebase.firestore().collection('items').where('takenBy', '==', loggedInUserData[0].firstName).get()
+				const itemsQuery = await firebase.firestore().collection('items')
+				.where('takenBy', '==', loggedInUserData[0].firstName)
+				.where('status', '==', 'OUT')
+				.get()
 				const myItems = itemsQuery.docs.map(item => ({
 					id: item.id,
 					...item.data()
@@ -23,15 +26,18 @@ const UserItemsList = () => {
 			}
 	}
 	const calcProgress = (returnDate, takenDate) => {
-		const max = daysDiff(takenDate);
+		// const max = daysDiff(takenDate);
 		const from = daysDiff(returnDate);
-		if(max*-1 > from) {
-			const final = (from * 100) / (max*-1);
-			return Math.ceil(100-final);
-		} else {
-			const final = ((max*-1) * 100) / (from);
-			return Math.ceil(100-final);
-		}
+		// if(max*-1 > from) {
+		// 	const final = (from * 100) / (max*-1);
+		// 	console.log(max, from);
+		// 	return Math.ceil(100-final);
+		// } else {
+		// 	const final = ((max*-1) * 100) / (from);
+		// 	console.log(max, from);
+		// 	return Math.ceil(100-final, 's');
+		// }
+		return Math.ceil(from);
 	}
 
 	const daysDiff = (itemDate) => { 
@@ -43,10 +49,19 @@ const UserItemsList = () => {
 		let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
 		return Math.round(Difference_In_Days);
 	}
+
+	const handleLabel = (lableVal) => {
+		if(lableVal *1000 < new Date().valueOf()) {
+			return 'Overdue !'
+		} else {
+
+			return moment.unix(lableVal).fromNow()
+		}
+	}
 	useEffect(() => {
 		getItems()
 	}, [loggedInUserData])
-	console.log(myItems[0])
+	
 	return ( 
 		<section>
 			<ContentBox
@@ -57,7 +72,7 @@ const UserItemsList = () => {
 				<div className='item-list'>
 					{item.name}
 					<ProgressBar
-						label={moment.unix(item.returnDate.seconds).fromNow()}
+						label={handleLabel(item.returnDate.seconds)}
 						progress={calcProgress(item.returnDate.seconds,item.takenDate.seconds)}/>
 				</div>
 				))

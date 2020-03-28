@@ -16,7 +16,7 @@ const ItemScan = () => {
   const [ msg, setMsg ] = useGlobal('notificationMsg');
   const [ item, setItem ] = useState('')
   const [ returnItem, setReturnItem ] = useState(false)
-  const [selectedDate, setSelectedDate] = React.useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(new Date());
   const handleDateChange = date => {
         setSelectedDate(date);
     };
@@ -58,7 +58,13 @@ const ItemScan = () => {
         created_at: new Date()
     })
         const takeObject = await firebase.firestore().collection('items').doc(item)
-        .set({returnDate: selectedDate, takenBy: loggedInUserData[0].firstName, status:'OUT', location: 'unknown'},{merge:true})
+        .set({
+          returnDate: selectedDate,
+          takenBy: loggedInUserData[0].firstName,
+          status:'OUT',
+          location: 'unknown',
+          takenDate: new Date()},
+          {merge:true})
         setMsg({show: true, msg:message, variant:'success'})
         return (takeObject, addLogs);
     } catch (error) {
