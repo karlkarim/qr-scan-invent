@@ -3,7 +3,7 @@ import './style.css';
 
 const DialogBox = ({ header, body, actions }) => {
   const [ dialogState, setDialogState ] = useGlobal('dialogState')
-
+  console.log(body)
     return(
       <div className={`dialog-root  ${dialogState? '': 'not-active'}`}>
         <div className='backDrop' onClick={() => setDialogState(!dialogState)}></div>

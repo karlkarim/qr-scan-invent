@@ -1,0 +1,56 @@
+.items-list-header {
+    text-align: center;
+    padding: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.items-list-columns {
+    margin: 15px;
+    text-transform: capitalize;
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.items-list-item {
+
+    margin: 5px;
+
+}
+
+.items-list-takebtn{
+    cursor: pointer;
+      border-radius: 5em;
+      color: #fff;
+      background: linear-gradient(to right, #1d3ee0, #7082db);
+      border: 0;
+      padding-left: 40px;
+      padding-right: 40px;
+      padding-bottom: 10px;
+      padding-top: 10px;
+      font-family: 'Ubuntu', sans-serif;
+      font-size: 13px;
+      box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+}
+
+.items-list-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc!important;
+    border-radius: 12px;
+    padding: 5px;
+    margin-top: 3px;
+    
+}
+
+.items-list-search{
+    text-align: center;
+}
+
+.search-form-control{
+    padding: 8px;
+}
+
+

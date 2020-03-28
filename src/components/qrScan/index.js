@@ -39,6 +39,7 @@ const QRScanForm = () => {
     }
     
     const returnObject = (item) => {
+      console.log(item)
       // firebase asju
       let docRef = firebase.firestore().collection('items').doc(item);
       const returnAction = async(item) => {
@@ -54,33 +55,33 @@ const QRScanForm = () => {
       }
       return (
         <div className=''>
-          <h4>Returning <b>{item}</b> back to storage ?</h4>
+          <h4>Returning <b>{item}</b> back to storage?</h4>
           <button onClick={() => returnAction(item)}> Return</button>
           <button onClick={() => setDialogState(false)}> Cancel</button>
         </div>
       )
     }
 
-    const takeObject = async (item) => {
+    const takeObject = (item) => {
       // firebase asju
-      try {
-        
-        const takeAction = await firebase.firestore().collection('items').doc(item)
-            .set({
-              takenDate: new Date(),
-              takenBy: loggedInUserData[0].firstName,
-              returnDate: selectedDate,
-              status:'OUT',
-              location: 'unknown'},
-              {merge: true})
-              
-              setDialogState(false)
-              return takeAction;
-      } catch (error) {
-        console.log(error)
+      const takeAction = async (item) => {
+        try {
+          const query = await firebase.firestore().collection('items').doc(item)
+              .set({
+                takenDate: new Date(),
+                name: item,
+                takenBy: loggedInUserData[0].firstName,
+                returnDate: selectedDate,
+                status:'OUT',
+                location: 'unknown'},
+                {merge: true})
+                
+                setDialogState(false)
+                return query;
+        } catch (error) {
+          console.log(error)
+        }
       }
-      
-
       return (
         <div className=''>
           <h4>Take <b>{item}</b> from storage?</h4>
@@ -90,7 +91,7 @@ const QRScanForm = () => {
               onChange={handleDateChange}
             />
           </div>
-          <button onClick={() => takeObject(item)}>Take</button>
+          <button onClick={() => takeAction(item)}>Take</button>
           <button onClick={() => setDialogState(false)}>Cancel</button>
         </div>
       )
