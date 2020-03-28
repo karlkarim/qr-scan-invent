@@ -65,9 +65,9 @@ const ItemsList = () => {
                             <p className="items-list-card-header">
                                 <p className="items-list-item">
                                 {item.name}
-                                </p>
                                 <i class={`${item.status === 'OUT' ? 'fas fa-sign-out-alt' : 'fas fa-check-square'}`}></i>
-                                <p>{`${item.status === 'OUT' ? `Taken by: ${item.takenBy}`: 'asi sees'}`}</p>
+                                </p>
+                                <p className='items-list-info'>{`${item.status === 'OUT' ? `Item is taken by: ${item.takenBy}`: 'Item is in storage'}`}</p>
                                 <button className="items-list-takebtn">Take item</button>
                             </p>
                         </div>
