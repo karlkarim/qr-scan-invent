@@ -39,7 +39,7 @@ const AddItemSection = () => {
 		<section>
 		<ContentBox 
 			title='Add new items'
-			icon={<i class="fas fa-folder-plus"></i>}
+			icon={<i className="fas fa-folder-plus"></i>}
 			children={
 				<>
 				<div className='qr-sample-root'>

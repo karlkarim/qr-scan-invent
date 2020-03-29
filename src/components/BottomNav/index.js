@@ -1,20 +1,34 @@
-import React from 'reactn';
+import React, { useGlobal, useEffect } from 'reactn';
 import { Link, useLocation } from 'react-router-dom';
+import { adminLinks, editorLinks, userLinks} from './navOptions';
 import './index.css';
-// import {logOut}  from '../../services/authServices'
-const linksArr = [
-  {link: '/', name: 'Home', icon: 'fas fa-home'},
-    {link: '/manage-qr', name: 'QR Items', icon: 'fas fa-qrcode'},
-    {link: '/manage-users', name: 'Users', icon: 'fas fa-users-cog'},
-    {link: '/scan', name: 'Scan', icon: 'far fa-id-card'},
-    {link: '/user-items', name: 'Items', icon: 'fas fa-list-ul'},
-]
 
 const BottomNav = () => {
+  const [ loggedInUserData ] = useGlobal('loggedInUserData');
   const location = useLocation();
-    return ( 
+  console.log(loggedInUserData[0].role)
+  const handleNav = () => {
+    let navOpts= [];
+    switch (loggedInUserData[0].role) {
+      case 'admin':
+        navOpts = adminLinks;
+        break;
+      case 'editor':
+        navOpts = editorLinks;
+        break;
+      default:
+        navOpts = userLinks;
+        break;
+    }
+    return navOpts
+  }
+  useEffect(() => {
+    handleNav()
+  })
+  console.log(handleNav())
+  return ( 
     <div className='nav-root'>
-    {linksArr.map((link, index) => (
+    {handleNav().map((link, index) => (
       <Link key={index} to={`${link.link}`} style={{textDecoration: 'none'}}>
       <button
       className={`nav-button-root nav-menu-base-root ${location.pathname === link.link ? 'button-selected': ''}`}>

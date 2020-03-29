@@ -9,13 +9,17 @@ import Loader from 'react-loader-spinner';
 import QRCode from 'qrcode.react';
 import ContentBox from '../ContentBox/index';
 
+
 const ListAndEditItems = () => {
+
 	const [ loggedInUserData ] = useGlobal('loggedInUserData');
 	const [dialogState, setDialogState ] = useGlobal('dialogState');
 	// eslint-disable-next-line no-unused-vars
 	const [ msg, setMsg ] = useGlobal('notificationMsg');
 	const [modalType, setModalType ] = useState('');
 	const [items, setItems ] = useState([])
+	const [searchTerm, setSearchTerm] = useState("");
+ 	const [searchResults, setSearchResults] = useState([]);
 	const [item, setItem ] = useState({
 		id: '',
 		name: ''
@@ -27,6 +31,9 @@ const ListAndEditItems = () => {
 		setItem({id:id, name:itemName})
 		
 	}
+	const handleSearch = event => {
+    setSearchTerm(event.target.value);
+  };
 	const handleEditValue = (e) => {
 		e.preventDefault();
 		setItem({...item, name:e.target.value})
@@ -39,7 +46,7 @@ const ListAndEditItems = () => {
 					id: doc.id,
 					...doc.data()
 				}))
-				setItems(item)
+				setItems(item);
 			})
 			return 
 		} catch (error) {
@@ -96,16 +103,34 @@ const ListAndEditItems = () => {
 	useEffect(() => {
 		getItems();
 	},[])
-	console.log(items);
+	useEffect(() => {
+		const results = items.filter(item =>
+      item.name.toLowerCase().includes(searchTerm)
+    );
+    setSearchResults(results);
+	},[items, searchTerm])
+
 	return ( 
 		<section>
+			<ContentBox
+				title='Search'
+				icon={<i className='fas fa-search'></i>}
+				children={
+					<TextField
+						inputType='text'
+						inputPlaceholder='Search items'
+						value={searchTerm}
+						onChange={handleSearch}
+					/>
+				}
+			/>
 		<ContentBox
 			title='Manage items'
-			icon={<i class="fas fa-qrcode"></i>}
+			icon={<i className="fas fa-qrcode"></i>}
 			children={
 				items.length ?
-				items.map(item => (
-				<div className='item-row'>
+				searchResults.map(item => (
+				<div key={item.id}className='item-row'>
 					<div className='item-header'>
 						<p>
 							<i

@@ -25,7 +25,7 @@ const ProfileMenu = () => {
                 <p>Item one</p>
                 <p>Item two</p>
                 <p>Item three</p>
-                <p className='log-out' onClick={() => logOut()}>Log out&nbsp;<i class="fas fa-door-open"></i></p>
+                <p className='log-out' onClick={() => logOut()}>Log out&nbsp;<i className="fas fa-door-open"></i></p>
             </div>
         </div>
      );

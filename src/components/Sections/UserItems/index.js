@@ -66,7 +66,7 @@ const UserItemsList = () => {
 		<section>
 			<ContentBox
 				title='To be returned'
-				icon={<i class="fas fa-history"></i>}
+				icon={<i className="fas fa-history"></i>}
 				children={
 				myItems.map(item => (
 				<div className='item-list'>
