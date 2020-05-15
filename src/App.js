@@ -29,6 +29,7 @@ const App = () => {
 },[loggedInUserData.length])
   return (
     <AuthProvider>
+      
       <Router>
         {loggedInUserData.length !== 0  ? <BottomNav /> : ''}
         {loggedInUserData.length !== 0  ? <TopNav /> : ''}

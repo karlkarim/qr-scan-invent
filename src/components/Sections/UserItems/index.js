@@ -68,6 +68,7 @@ const UserItemsList = () => {
 				title='To be returned'
 				icon={<i className="fas fa-history"></i>}
 				children={
+					myItems != 0 ?
 				myItems.map(item => (
 				<div className='item-list'>
 					{item.name}
@@ -75,7 +76,8 @@ const UserItemsList = () => {
 						label={handleLabel(item.returnDate.seconds)}
 						progress={calcProgress(item.returnDate.seconds,item.takenDate.seconds)}/>
 				</div>
-				))
+				)):
+				'You don\'t have any items'
 			} />
 		</section>
 		);
